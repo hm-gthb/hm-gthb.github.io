@@ -1,0 +1,108 @@
+/* YOUR CUSTOM STYLES */
+
+#customizer {
+	position:fixed;
+	right:0;
+	right:-200px;
+	top:25%;
+	background:#2D3E50;
+	width:200px;
+	transition: right 1s;
+	z-index:666;
+	color:#fff;
+	border-radius:0 0 0 2px;
+}
+
+#customizer.visible {
+	right:0;
+}
+
+#customizer #toggle {
+	display:inline-block;
+	position:absolute;
+	margin-left:-47px;
+	font-size:32px;
+	background:#2D3E50;
+	border-radius:2px 0 0 2px;
+	color:#fff;
+	padding:9px;
+}
+
+#customizer .inner {
+	margin-top:10px;
+	padding:10px 0;
+}
+
+#customizer .skins-list {
+	margin-top:8px;
+	text-align: center;
+}
+
+#customizer .skins-list li {
+	display:inline-block;
+}
+
+#customizer .skins-list li a {
+	display:block;
+}
+
+#customizer .skins-list li a .color {
+	display:block;
+	width:32px;
+	height:32px;
+	border-radius:50%;
+	background:#fff;
+	border:1px solid #fff;
+}
+
+#customizer .skins-list li a .color.skin-blue {
+	background-color: #072e6e;
+}
+
+#customizer .skins-list li a .color.skin-red {
+	background-color: #f00;
+}
+
+#customizer .skins-list li a .color.skin-green {
+	background-color: #003830;
+}
+
+#customizer .skins-list li a .color.skin-purple {
+	background-color: #54057d;
+}
+
+#customizer .skins-list li a .color.skin-dark {
+	background-color: #3b3b3b;
+}
+
+#customizer .skins-list li a .color.skin-mdb {
+	background-color: #3f729b;
+}
+
+#customizer .skins-list li a .color.skin-deep-orange {
+	background-color: #8a1a00;
+}
+
+#customizer .skins-list li a .color.skin-graphite {
+	background-color: #37474f;
+}
+
+#customizer .skins-list li a .color.skin-pink {
+	background-color: #ab1550;
+}
+
+#customizer .skins-list li a .color.skin-light-grey {
+	background-color: #686868;
+}
+
+#customizer .skins-list li a .color.skin-white {
+	background-color: #fff;
+}
+
+#customizer .skins-list li a .color.skin-elegant-white {
+	background-color: #ECEDEE;
+}
+
+#customizer .skins-list li a .color.skin-elegant-dark {
+	background-color: #131415;
+}

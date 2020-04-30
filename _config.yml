@@ -1,1 +1,8 @@
-theme: jekyll-theme-cayman
+title: High Yield Investment Program Milker
+desc: Earn passive income with high yield investment programs
+description: 'Earn passive income with high yield investment programs'
+url: https://hyipmilker.com
+baseurl: ''
+permalink: '/:title.html'
+ngrok: https://bc1208f9.ngrok.io/x/hyipmilker/php-hyipmilker
+exclude: [wSERVEJEKYLL.bat, .gitignore, DRAFTS]
