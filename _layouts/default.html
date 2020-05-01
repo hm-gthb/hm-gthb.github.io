@@ -11,6 +11,51 @@
     <link href="css/mdb.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="canonical" href="{{ site.url }}/{{ page.permalink | replace:'index.html',''}}">
+    
+    <script>
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      function checkCookie() {
+        var token = getCookie("token");
+        if (token != "") {  // logged in
+          $(".dashboard-btn").show();
+          $(".logout-btn").show();
+          $(".login-btn").hide();
+          $(".register-btn").hide();
+        }else{  // logged out
+          $(".dashboard-btn").hide();
+          $(".logout-btn").hide();
+          $(".login-btn").show();
+          $(".register-btn").show();
+          if(window.location.pathname == "/dashboard.html"){
+            window.location="/";
+          }
+        }
+      }
+
+      checkCookie();
+    </script>
   </head>
   
   <body class="fixed-sn elegant-white-skin">
