@@ -36,6 +36,7 @@ function checkCookie() {
     $(".logout-btn").show();
     $(".login-btn").hide();
     $(".register-btn").hide();
+    $("#big_register_button").hide();
   }else{  // logged out
     $(".dashboard-btn").hide();
     $(".logout-btn").hide();
