@@ -18,11 +18,17 @@
       <nav class="navbar navbar-fixed-top double-nav">
         <a class = "pull-left ml-1" style="margin-top:5px" href = "{{ site.baseurl }}/"><h1>HYIP Milker</h1></a>
         <ul class="nav navbar-nav pull-right">
-          <li class="nav-item ">
+          <li class="nav-item login-btn">
             <a class="btn btn-primary orange px-1" data-toggle="modal" data-target="#standardModal">Login <i class="fa fa-sign-in "></i></a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item register-btn">
             <a class="btn btn-primary green px-1" data-toggle="modal" data-target="#standardModal2">Register <i class="fa fa-user-plus "></i></a>
+          </li>
+          <li class="nav-item dashboard-btn">
+            <a class="btn btn-primary blue px-1" href = "/dashboard.html">Dashboard <i class="fa fa-cube "></i></a>
+          </li>
+          <li class="nav-item logout-btn">
+            <a class="btn btn-primary danger-color px-1" onclick = "setCookie('token','',0);window.location='/';">Logout <i class="fa fa-sign-out "></i></a>
           </li>
         </ul>
       </nav>
@@ -162,9 +168,8 @@
   <script type="text/javascript" src="js/tether.min.js"></script>
   <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Core JavaScript -->
   <script type="text/javascript" src="js/core.js"></script>
 

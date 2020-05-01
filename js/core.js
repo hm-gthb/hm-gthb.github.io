@@ -29,16 +29,21 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-  var username = getCookie("username");
-  if (username != "") {
-   alert("Welcome again " + username);
+  var token = getCookie("token");
+  if (token != "") {
+   $(".dashboard-btn").show();
+   $(".logout-btn").show();
+   $(".login-btn").hide();
+   $(".register-btn").hide();
   } else {
-    username = prompt("Please enter your name:", "");
-    if (username != "" && username != null) {
-      setCookie("username", username, 365);
-    }
+   $(".dashboard-btn").hide();
+   $(".logout-btn").hide();
+   $(".login-btn").show();
+   $(".register-btn").show();
   }
 }
+
+checkCookie();
 
 $("#login_form").submit(function(e){
     e.preventDefault();
@@ -46,7 +51,14 @@ $("#login_form").submit(function(e){
     var data =  $('#login_form').serialize();
     var url = $("#login_form").attr("action");
     $.post(url, data, function(return_data){
-      if(return_data.err){$("#login_return").addClass("text-danger").html(return_data.msg);}else{$("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);setTimeout(function(){window.location="/account.html"},5000);}
+      if(return_data.err){
+        $("#login_return").addClass("text-danger").html(return_data.msg);
+      }else{
+        $("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+        // set cookie here
+        setCookie("token", return_data.token, 30);
+        setTimeout(function(){window.location="/account.html"},5000);
+      }
     },"json");
 });
 
@@ -56,7 +68,14 @@ $("#register_form").submit(function(e){
     var data =  $('#register_form').serialize();
     var url = $("#register_form").attr("action");
     $.post(url, data, function(return_data){
-      if(return_data.err){$("#register_return").addClass("text-danger").html(return_data.msg);}else{$("#register_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);setTimeout(function(){window.location="/account.html"},5000);}
+      if(return_data.err){
+        $("#register_return").addClass("text-danger").html(return_data.msg);
+      }else{
+        $("#register_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+        // set cookie here
+        setCookie("token", return_data.token, 30);
+        setTimeout(function(){window.location="/account.html"},5000);
+      }
     },"json");
 });
 
@@ -66,6 +85,11 @@ $("#forgot_form").submit(function(e){
     var data =  $('#forgot_form').serialize();
     var url = $("#forgot_form").attr("action");
     $.post(url, data, function(return_data){
-      if(return_data.err){$("#password_return").addClass("text-danger").html(return_data.msg);}else{$("#password_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);setTimeout(function(){window.location="/account.html"},5000);}
+      if(return_data.err){
+        $("#password_return").addClass("text-danger").html(return_data.msg);
+      }else{
+        $("#password_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+        // destroy cookie here
+      }
     },"json");
 });
