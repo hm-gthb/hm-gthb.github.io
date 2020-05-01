@@ -2,7 +2,8 @@ $.ajaxSetup({
     crossDomain: true,
     xhrFields: {
         withCredentials: true
-    }
+    },
+    cache: false
 });
 
 function setCookie(cname, cvalue, exdays) {
