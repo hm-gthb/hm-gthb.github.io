@@ -34,6 +34,7 @@ function checkCookie() {
   if (token != "") {  // logged in
     $(".dashboard-btn").show();
     $(".logout-btn").show();
+    $(".account-btn").show();
     $(".login-btn").hide();
     $(".register-btn").hide();
     $( document ).ready(function() {
@@ -43,6 +44,7 @@ function checkCookie() {
   }else{  // logged out
     $(".dashboard-btn").hide();
     $(".logout-btn").hide();
+    $(".account-btn").hide();
     $(".login-btn").show();
     $(".register-btn").show();
     if(window.location.pathname == "/dashboard.html"){
