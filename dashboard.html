@@ -4,6 +4,38 @@ title: Dashboard
 permalink: dashboard.html
 ---
 
+  <form id = "forgot_form" method = "post" action = "{{site.ngrok}}/forgotpass.php">
+    <div class="modal fade " style = "padding-top:50px;" id="standardModalpr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="mx-auto float-xs-none">
+          <div class="card">
+            <div class="card-block">
+            
+              <div class="form-header">
+                <h3><i class="fa fa-lock"></i> Password Reset </h3>
+              </div>
+
+              <div class="md-form">
+                <i class="fa fa-envelope prefix"></i>
+                <input type="text" id="forgot_email" name="forgot_email" class="form-control">
+                <label for="forgot_email">E-mail</label>
+              </div>
+
+              <div class="modal-footer">
+                <button id="2lvlModal-fpw" class="btn btn-primary green px-1" >Reset password</button>
+                <a id="2lvlModal-cancel2" class="btn btn-default red px-1"  data-dismiss="modal" aria-label="Close"><i  aria-hidden="true" class = "fa fa-times"></i></a>
+              </div>
+              
+              <div class = "text-xs-center"><span id = "password_return" class = "lead"></span></div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  
 <main class="white">
   <div class="container ">
     <br>
@@ -28,7 +60,7 @@ permalink: dashboard.html
                 <br>
                 <hr />
                 Deposit List
-                <button class = "btn btn-success pull-right px-1" style = "margin-top: -7px;">Add Funds <i class = "fa fa-plus pl-1"></i></button>
+                <button class = "btn btn-success pull-right px-1" style = "margin-top: -7px;" data-toggle="modal" data-target="#standardModalpr">Add Funds <i class = "fa fa-plus pl-1"></i></button>
                 <hr />
 
                 <table class="table small">
@@ -132,7 +164,7 @@ permalink: dashboard.html
                 
                 <br>
                 <hr />
-                <input type="text" value="https://hyipmilker.com/?240" id="refLink" style="width:55%; font-weight: 400; font-size: 16px;">
+                <input type="text" value="https://hyipmilker.com/?240" id="refLink" spellcheck="false" style="width:55%; font-weight: 400; font-size: 16px;">
                 <button onclick="copyClip('refLink')" class = "btn btn-primary pull-right px-1" style = "margin-top: -7px;">Copy <i class = "fa fa-clone pl-1"></i></button>
                 <hr />
                 <br>
