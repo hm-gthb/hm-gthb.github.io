@@ -18,7 +18,7 @@ $("#login_form").submit(function(e){
         $("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
         // set cookie here
         setCookie("token", return_data.token, 30);
-        setTimeout(function(){window.location="/account.html"},5000);
+        setTimeout(function(){window.location="/dashboard.html"},5000);
       }
     },"json");
 });
@@ -35,7 +35,7 @@ $("#register_form").submit(function(e){
         $("#register_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
         // set cookie here
         setCookie("token", return_data.token, 30);
-        setTimeout(function(){window.location="/account.html"},5000);
+        setTimeout(function(){window.location="/dashboard.html"},5000);
       }
     },"json");
 });
