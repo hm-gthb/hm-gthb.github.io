@@ -3325,16 +3325,7 @@ blockquote p {
   margin-right: 8px;
 }
 
-.section hr {
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-}
 
-@media (min-width: 992px) {
-  .section hr {
-    display: none;
-  }
-}
 
 .section .contact-icons {
   text-align: center;
