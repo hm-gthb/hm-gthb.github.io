@@ -30,16 +30,19 @@ function getCookie(cname) {
 
 function checkCookie() {
   var token = getCookie("token");
-  if (token != "") {
-   $(".dashboard-btn").show();
-   $(".logout-btn").show();
-   $(".login-btn").hide();
-   $(".register-btn").hide();
-  } else {
-   $(".dashboard-btn").hide();
-   $(".logout-btn").hide();
-   $(".login-btn").show();
-   $(".register-btn").show();
+  if (token != "") {  // logged in
+    $(".dashboard-btn").show();
+    $(".logout-btn").show();
+    $(".login-btn").hide();
+    $(".register-btn").hide();
+  }else{  // logged out
+    $(".dashboard-btn").hide();
+    $(".logout-btn").hide();
+    $(".login-btn").show();
+    $(".register-btn").show();
+    if(window.location.pathname == "/dashboard.html"){
+      window.location="/";
+    }
   }
 }
 
@@ -89,7 +92,7 @@ $("#forgot_form").submit(function(e){
         $("#password_return").addClass("text-danger").html(return_data.msg);
       }else{
         $("#password_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
-        // destroy cookie here
+        setCookie('token','',0);
       }
     },"json");
 });
