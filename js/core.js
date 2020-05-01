@@ -46,7 +46,7 @@ function checkCookie() {
   }
 }
 
-$("#login_form").submit(function(e){
+$(document).on("submit", "#login_form", function (e) {
     e.preventDefault();
     var form = this;
     var data =  $('#login_form').serialize();
@@ -63,7 +63,7 @@ $("#login_form").submit(function(e){
     },"json");
 });
 
-$("#register_form").submit(function(e){
+$(document).on("submit", "#register_form", function (e) {
     e.preventDefault();
     var form = this;
     var data =  $('#register_form').serialize();
@@ -80,7 +80,7 @@ $("#register_form").submit(function(e){
     },"json");
 });
 
-$("#forgot_form").submit(function(e){
+$(document).on("submit", "#forgot_form", function (e) {
     e.preventDefault();
     var form = this;
     var data =  $('#forgot_form').serialize();
