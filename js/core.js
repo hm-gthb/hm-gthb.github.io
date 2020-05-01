@@ -5,10 +5,6 @@ $.ajaxSetup({
     }
 });
 
-// Tooltips Initialization
-$(function() {
-    $('[data-toggle="tooltip"]').tooltip()
-})
 
 
 function setCookie(cname, cvalue, exdays) {
