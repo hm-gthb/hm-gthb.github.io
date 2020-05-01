@@ -1,9 +1,15 @@
- $.ajaxSetup({
+$.ajaxSetup({
     crossDomain: true,
     xhrFields: {
         withCredentials: true
     }
 });
+
+// Tooltips Initialization
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
 
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
@@ -69,8 +75,3 @@ $("#forgot_form").submit(function(e){
       if(return_data.err){$("#password_return").addClass("text-danger").html(return_data.msg);}else{$("#password_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);setTimeout(function(){window.location="/account.html"},5000);}
     },"json");
 });
-
-// Tooltips Initialization
-$(function() {
-    $('[data-toggle="tooltip"]').tooltip()
-})
