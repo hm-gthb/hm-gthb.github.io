@@ -15841,7 +15841,15 @@ body {
   font-size: 16px;
   font-weight: 300;
   padding: 10px 20px;
-  width:150px;
+  width:120px;
+}
+
+.tag.dollar-tag {
+  float:right;
+  font-weight: 300;
+  padding: 20px 20px;
+  width:50px;
+  font-size: small;
 }
 
 .cascading-table {
