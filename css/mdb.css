@@ -15837,6 +15837,12 @@ body {
   padding: 10px 20px;
   width:100px;
 }
+.tag.huge-tag {
+  font-size: 16px;
+  font-weight: 300;
+  padding: 10px 20px;
+  width:150px;
+}
 
 .cascading-table {
   margin-top: -1rem;
