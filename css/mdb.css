@@ -16551,3 +16551,9 @@ ul.striped li:last-child {
 .elegant-dark-skin .tag, .elegant-dark-skin .form-header, .elegant-dark-skin .card-header {
   background-color: #30d5a8;
 }
+
+
+
+@media all and (max-width:480px) {
+   .custom-class { width: 100%; display:block; }
+}   
