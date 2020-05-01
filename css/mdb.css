@@ -16556,7 +16556,7 @@ ul.striped li:last-child {
 
 @media all and (max-width:480px) {
   .small-buttons {
-     font-size: 10px!important;
+     font-size: 9px!important;
      padding: 10px 5px 10px 5px;
   }
 }   
