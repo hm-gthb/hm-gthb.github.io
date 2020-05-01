@@ -7,6 +7,31 @@ $.ajaxSetup({
 
 
 
+           // Material Select Initialization
+            $(document).ready(function() {
+                $('.mdb-select').material_select();
+            });
+            // Tooltips Initialization
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            
+            
+            
+            $('#actionScoring, #actionCondition').on('show.bs.modal', function(e) {
+                $("label").addClass("active");
+            })
+
+            $('#actionScoring, #actionCondition').on('show.bs.modal', function(e) {
+                $("label").addClass("active");
+                $('.mdb-select').material_select();
+            })
+            $('#actionScoring, #actionCondition').on('hide.bs.modal', function(e) {
+                $("label").addClass("active");
+                $('.mdb-select').material_select('destroy');
+            })
+            
+
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
