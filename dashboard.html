@@ -4,26 +4,53 @@ title: Dashboard
 permalink: dashboard.html
 ---
 
-  <form id = "forgot_form" method = "post" action = "{{site.ngrok}}/forgotpass.php">
-    <div class="modal fade " style = "padding-top:50px;" id="standardModalpr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal fade " style = "padding-top:50px;" id="deposit_modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="mx-auto float-xs-none">
           <div class="card">
             <div class="card-block">
             
               <div class="form-header">
-                <h3><i class="fa fa-lock"></i> Password Reset </h3>
+                <h3><i class="fa fa-lock"></i> Add Funds </h3>
+              </div>
+
+              <input type="text" value="aEDSf54ds5f345df4sd5f4ds5f4d5f4s1xc" id="deposit_address" spellcheck="false" style="width:55%; font-weight: 400; font-size: 16px;">
+
+              <div class="modal-footer">
+                <button onclick="copyClip('deposit_address')" class = "btn btn-primary pull-right px-1" style = "margin-top: -7px;">Copy the address<i class = "fa fa-clone pl-1"></i></button>
+                <a class="btn btn-default red px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
+              </div>
+              
+              <div class = "text-xs-center"><span id = "password_return" class = "lead"></span></div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+  <form id = "forgot_form" method = "post" action = "{{site.ngrok}}/withdraw.php">
+    <div class="modal fade " style = "padding-top:50px;" id="withdrawal_modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="mx-auto float-xs-none">
+          <div class="card">
+            <div class="card-block">
+            
+              <div class="form-header">
+                <h3><i class="fa fa-lock"></i> Withdraw Earnings </h3>
               </div>
 
               <div class="md-form">
                 <i class="fa fa-envelope prefix"></i>
-                <input type="text" id="forgot_email" name="forgot_email" class="form-control">
-                <label for="forgot_email">E-mail</label>
+                <input type="text" id="amount" name="amount" class="form-control">
+                <label for="amount">Amount</label>
               </div>
 
               <div class="modal-footer">
-                <button id="2lvlModal-fpw" class="btn btn-primary green px-1" >Reset password</button>
-                <a id="2lvlModal-cancel2" class="btn btn-default red px-1"  data-dismiss="modal" aria-label="Close"><i  aria-hidden="true" class = "fa fa-times"></i></a>
+                <button class="btn btn-primary green px-1" >Withdraw</button>
+                <a class="btn btn-default red px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
               </div>
               
               <div class = "text-xs-center"><span id = "password_return" class = "lead"></span></div>
@@ -60,7 +87,7 @@ permalink: dashboard.html
                 <br>
                 <hr />
                 Deposit List
-                <button class = "btn btn-success pull-right px-1" style = "margin-top: -7px;" data-toggle="modal" data-target="#standardModalpr">Add Funds <i class = "fa fa-plus pl-1"></i></button>
+                <button class = "btn btn-success pull-right px-1" style = "margin-top: -7px;" data-toggle="modal" data-target="#deposit_modal">Add Funds <i class = "fa fa-plus pl-1"></i></button>
                 <hr />
 
                 <table class="table small">
@@ -103,7 +130,7 @@ permalink: dashboard.html
                 <br>
                 <hr />
                 Withdrawal List 
-                <button class = "btn btn-danger pull-right px-1" style = "margin-top: -7px;">Withdraw <i class = "fa fa-minus"></i></button>
+                <button class = "btn btn-danger pull-right px-1" style = "margin-top: -7px;" data-toggle="modal" data-target="#withdrawal_modal">Withdraw <i class = "fa fa-minus"></i></button>
                 <hr />
 
                 <table class="table small">

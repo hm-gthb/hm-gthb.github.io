@@ -25,10 +25,10 @@
         <a class = "pull-left ml-1" style="margin-top:5px" href = "{{ site.baseurl }}/"><h1>HYIP Milker</h1></a>
         <ul class="nav navbar-nav pull-right">
           <li class="nav-item login-btn">
-            <a class="btn btn-primary orange px-1" data-toggle="modal" data-target="#standardModal">Login <i class="fa fa-sign-in "></i></a>
+            <a class="btn btn-primary orange px-1" data-toggle="modal" data-target="#login_modal">Login <i class="fa fa-sign-in "></i></a>
           </li>
           <li class="nav-item register-btn">
-            <a class="btn btn-primary green px-1" data-toggle="modal" data-target="#standardModal2">Register <i class="fa fa-user-plus "></i></a>
+            <a class="btn btn-primary green px-1" data-toggle="modal" data-target="#register_modal">Register <i class="fa fa-user-plus "></i></a>
           </li>
           <li class="nav-item dashboard-btn">
             <a class="btn btn-primary blue px-1" href = "/dashboard.html">Dashboard <i class="fa fa-cube "></i></a>
@@ -42,7 +42,7 @@
     </header>
 
   <form id = "login_form" method = "post" action = "{{site.ngrok}}/login.php">
-    <div class="modal fade " style = "padding-top:50px;" id="standardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade " style = "padding-top:50px;" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="mx-auto float-xs-none">
           <div class="card">
@@ -66,9 +66,9 @@
 
               
               <div class="modal-footer">
-                <a data-dismiss="modal" data-toggle="modal" data-target="#standardModalpr">I forgot my password</a>
-                <button id="2lvlModal-login1" class="btn btn-primary green px-1" >Login <i class="fa fa-sign-in ml-1"></i></button>
-                <a id="2lvlModal-cancel3" class="btn btn-default red px-1"  data-dismiss="modal" aria-label="Close"><i  aria-hidden="true" class = "fa fa-times"></i></a>
+                <a data-dismiss="modal" data-toggle="modal" data-target="#forgot_modal">I forgot my password</a>
+                <button class="btn btn-primary green px-1" >Login <i class="fa fa-sign-in ml-1"></i></button>
+                <a class="btn btn-default red px-1"  data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
               </div>
               
               <div class = "text-xs-center"><span id = "login_return" class = "lead"></span></div>
@@ -82,7 +82,7 @@
 
 
   <form id = "forgot_form" method = "post" action = "{{site.ngrok}}/forgotpass.php">
-    <div class="modal fade " style = "padding-top:50px;" id="standardModalpr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade " style = "padding-top:50px;" id="forgot_modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="mx-auto float-xs-none">
           <div class="card">
@@ -99,8 +99,8 @@
               </div>
 
               <div class="modal-footer">
-                <button id="2lvlModal-fpw" class="btn btn-primary green px-1" >Reset password</button>
-                <a id="2lvlModal-cancel2" class="btn btn-default red px-1"  data-dismiss="modal" aria-label="Close"><i  aria-hidden="true" class = "fa fa-times"></i></a>
+                <button class="btn btn-primary green px-1">Reset password</button>
+                <a class="btn btn-default red px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
               </div>
               
               <div class = "text-xs-center"><span id = "password_return" class = "lead"></span></div>
@@ -114,7 +114,7 @@
 
 
   <form id = "register_form" method = "post" action = "{{site.ngrok}}/register.php">
-    <div class="modal fade " style = "padding-top:40px;" id="standardModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade " style = "padding-top:40px;" id="register_modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="mx-auto float-xs-none">
           <div class="card">
@@ -151,8 +151,8 @@
               <input type="hidden" id="referrer_username" name = "referrer_username" value = "test">
               
               <div class="modal-footer">
-                <button id="2lvlModal-register" class="btn btn-primary green px-1" >Register <i class="fa fa-user-plus ml-1"></i></button>
-                <a id="2lvlModal-cancel" class="btn btn-default red px-1"  data-dismiss="modal" aria-label="Close"><i  aria-hidden="true" class = "fa fa-times"></i></a>
+                <button class="btn btn-primary green px-1" >Register <i class="fa fa-user-plus ml-1"></i></button>
+                <a class="btn btn-default red px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
               </div>
               
               <div class = "text-xs-center"><span id = "register_return" class = "lead"></span></div>
