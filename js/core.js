@@ -132,3 +132,21 @@ $(document).on("submit", "#forgot_form", function (e) {
       }
     },"json");
 });
+
+$(document).on("submit", "#account_form", function (e) {
+    e.preventDefault();
+    var form = this;
+    var data =  $('#account_form').serialize();
+    var url = $("#account_form").attr("action");
+    $.post(url, data, function(return_data){
+      if(return_data.err){
+        $("#account_return").addClass("text-danger").html(return_data.msg);
+      }else{
+        $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+        // set cookie here
+        setCookie("token", return_data.token, 30);
+        setCookie("btc_address", return_data.btc_address, 30);
+        setTimeout(function(){window.location="/dashboard.html"},5000);
+      }
+    },"json");
+});
