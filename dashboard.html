@@ -86,10 +86,14 @@ permalink: dashboard.html
                 <h4 class="pb-1 small" style = " background-color:#eee"><span class="tag huge-tag secondary-color mt-2 mr-1" style="margin-left:-10px">Invested</span>   122.36 mBtc <span class="tag dollar-tag secondary-color mt-2">412.56$</span></h4>
                 <h4 class="pb-1 small" style = "background-color:#eee"><span class="tag huge-tag info-color mt-2 mr-1" style="margin-left:-10px">Earned</span>   4.36 mBtc <span class="tag dollar-tag info-color mt-2">8.56$</span></h4>
 
+                <hr />
+                <button class = "btn btn-success pull-right px-1" style = "margin-top: -7px;" data-toggle="modal" data-target="#deposit_modal">Add Funds <i class = "fa fa-plus pl-1"></i></button>
+                <button class = "btn btn-danger pull-right px-1" style = "margin-top: -7px;" data-toggle="modal" data-target="#withdrawal_modal">Withdraw <i class = "fa fa-minus"></i></button>
+                <hr />
+                
                 <br>
                 <div class = "card p-1">
-                  Deposits
-                  <button class = "btn btn-success pull-right px-1" style = "margin-top: -7px;" data-toggle="modal" data-target="#deposit_modal">Add Funds <i class = "fa fa-plus pl-1"></i></button>
+                  Transaction History
                   <hr />
 
                   <table class="table small">
@@ -104,19 +108,19 @@ permalink: dashboard.html
                     <tbody>
                       <tr>
                         <td>2020-05-02<br>15:30</td>
-                        <td><span class="tag green" style = "font-weight:300; width:90px; padding: 5px;">Deposit <i class="fa fa-arrow-circle-up"></i></span></td>
+                        <td><span class="tag green" style = "font-weight:300; width:90px; padding: 5px; margin-top: 10px;">Deposit <i class="fa fa-arrow-circle-up"></i></span></td>
                         <td>1.25<br>mBtc</td>
                         <td>1.25<br>mBtc</td>
                       </tr>
                       <tr>
                         <td>2020-05-02<br>15:30</td>
-                        <td><span class="tag red" style = "font-weight:300; width:90px; padding: 5px;">Withdraw <i class="fa fa-arrow-circle-down"></i></span></td>
+                        <td><span class="tag red" style = "font-weight:300; width:90px; padding: 5px;   margin-top: 10px;">Withdraw <i class="fa fa-arrow-circle-down"></i></span></td>
                         <td>4.25<br>mBtc</td>
-                        <td><a><i class = "fa fa-external-link"></i></a></td>
+                        <td><a style = " margin-top: 10px; display:block;"><i class = "fa fa-external-link"></i></a></td>
                       </tr>
                       <tr>
                         <td>2020-05-02<br>15:30</td>
-                        <td><span class="tag orange" style = "font-weight:300; width:90px; padding: 5px;">Leftover <i class="fa fa-arrow-circle-left"></i></span></td>
+                        <td><span class="tag orange" style = "font-weight:300; width:90px; padding: 5px; margin-top: 10px;">Leftover <i class="fa fa-arrow-circle-left"></i></span></td>
                         <td>4.25<br>mBtc</td>
                         <td>4.25<br>mBtc</td>
                       </tr>
@@ -126,48 +130,6 @@ permalink: dashboard.html
                 </div>
                 
                 
-                <div class = "card p-1">
-                  Withdraws 
-                  <button class = "btn btn-danger pull-right px-1" style = "margin-top: -7px;" data-toggle="modal" data-target="#withdrawal_modal">Withdraw <i class = "fa fa-minus"></i></button>
-                  <hr />
-
-                  <table class="table small">
-                    <thead class = "small">
-                      <tr class = "">
-                        <th>Country</th>
-                        <th>Visits</th>
-                        <th>Pages</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><i class = "fa fa-flag"></i> United States</td>
-                        <td><span class="tag big-tag green">15 <i class="fa fa-arrow-circle-up"></i></span></td>
-                        <td>307</td>
-                      </tr>
-                      <tr>
-                        <td><i class = "fa fa-flag"></i> India</td>
-                        <td>32</td>
-                        <td>504</td>
-                      </tr>
-                      <tr>
-                        <td><i class = "fa fa-flag"></i> China</td>
-                        <td>41</td>
-                        <td>613</td>
-                      </tr>
-                      <tr>
-                        <td><i class = "fa fa-flag"></i> Poland</td>
-                        <td>14</td>
-                        <td>208</td>
-                      </tr>
-                      <tr>
-                        <td><i class = "fa fa-flag"></i> Italy</td>
-                        <td>24</td>
-                        <td>314</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
               </div>
               
             </div>
