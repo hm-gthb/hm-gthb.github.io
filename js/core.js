@@ -43,6 +43,8 @@ function checkCookie() {
       $("#acc_username").html(getCookie("username"));
       $("#acc_email").html(getCookie("email"));
       $("#up_account_btc").val(getCookie("btc_address"));
+      $(".uid").val(getCookie("id"));
+      $(".token").val(getCookie("token"));
     });
   }else{  // logged out
     $(".dashboard-btn").hide();
@@ -141,12 +143,16 @@ $(document).on("submit", "#account_form", function (e) {
     $.post(url, data, function(return_data){
       if(return_data.err){
         $("#account_return").addClass("text-danger").html(return_data.msg);
+        if(return_data.msg == "Authentication Failed. Loggin out..."){
+          //destroy all cookies
+          document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+          setTimeout(function(){window.location="/"},5000);
+        }
       }else{
         $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
         // set cookie here
         setCookie("token", return_data.token, 30);
         setCookie("btc_address", return_data.btc_address, 30);
-        setTimeout(function(){window.location="/dashboard.html"},5000);
       }
     },"json");
 });
