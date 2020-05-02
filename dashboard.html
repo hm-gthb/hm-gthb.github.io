@@ -12,14 +12,15 @@ permalink: dashboard.html
             <div class="card-block">
             
               <div class="form-header green">
+                <a class="btn btn-default pull-right red px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
                 <h3><i class="fa fa-plus"></i> Add Funds </h3>
               </div>
 
-              <input type="text" value="aEDSf54ds5f345df4sd5f4ds5f4d5f4s1xc" id="deposit_address" spellcheck="false" style="text-align: center;border: none;font-weight: 300;font-size: 21px;">
+              <input type="text" value="aEDSf54ds5f345df4sd5f4ds5f4d5f4s1xc" disabled="disabled" id="deposit_address" spellcheck="false" style="text-align: center;border: none;font-weight: 300;font-size: 21px;   color: darkorange;">
 
               <div class="modal-footer">
                 <button onclick="copyClip('deposit_address')" class = "btn btn-primary px-1">Copy the address<i class = "fa fa-clone pl-1"></i></button>
-                <a class="btn btn-default red px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
+                
               </div>
               
               <div class = "lead">Send and it will get confirmed.</div>
@@ -39,6 +40,7 @@ permalink: dashboard.html
             <div class="card-block">
             
               <div class="form-header danger-color">
+                <a class="btn btn-default pull-right red px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
                 <h3><i class="fa fa-lock"></i> Withdraw Earnings </h3>
               </div>
 
@@ -50,7 +52,6 @@ permalink: dashboard.html
 
               <div class="modal-footer">
                 <button class="btn btn-primary danger-color px-1" >Withdraw <i class="fa fa-minus pl-1"></i></button>
-                <a class="btn btn-default red px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
               </div>
               
               <div class = "text-xs-center"><span id = "password_return" class = "lead"></span></div>
