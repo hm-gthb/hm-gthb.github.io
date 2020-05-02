@@ -153,6 +153,7 @@ $(document).on("submit", "#account_form", function (e) {
         // set cookie here
         setCookie("token", return_data.token, 30);
         setCookie("btc_address", return_data.btc_address, 30);
+        checkCookie();
       }
     },"json");
 });
