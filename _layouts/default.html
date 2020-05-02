@@ -126,15 +126,38 @@
                 <h3><i class="fa fa-user"></i> Account Details </h3>
               </div>
 
-              <div class="md-form">
-                <i class="fa fa-envelope prefix"></i>
-                <input type="text" id="account_email" name="account_email" class="form-control">
-                <label for="account_email">E-mail</label>
-              </div>
+              
+                  <table class="table small">
+                    <tbody>
+                      <tr>
+                        <td><i class = "fa fa-user"></i> Username</td>
+                        <td>qwe</td>
+                      </tr>
+                      <tr>
+                        <td><i class = "fa fa-flag"></i> Email</td>
+                        <td><input type="text" id="up_account_email" name="up_account_email" class="form-control"></td>
+                      </tr>
+                      <tr>
+                        <td><i class = "fa fa-flag"></i> BTC Address</td>
+                        <td>41asda324sadasd53ad3sada</td>
+                      </tr>
+                      <tr colspan = "2"><td>Type new password only if you want to change it.</td></tr>
+                      <tr>
+                        <td><i class = "fa fa-flag"></i> Password</td>
+                        <td><input type="text" id="up_account_pass1" name="up_account_pass1" class="form-control"></td>
+                      </tr>
+                      <tr>
+                        <td><i class = "fa fa-flag"></i> Password Again</td>
+                        <td><input type="text" id="up_account_pass2" name="up_account_pass2" class="form-control"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  
 
               <div class="modal-footer">
-                <button class="btn btn-primary green px-1">UPDATE</button>
-                <a class="btn btn-default teal px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
+                <button class="btn btn-primary green px-1">UPDATE <i class = "fa fa-floppy-o"></i></button>
+                <a class="btn btn-default danger-color px-1" data-dismiss="modal" aria-label="Close"><i aria-hidden="true" class = "fa fa-times"></i></a>
               </div>
               
               <div class = "text-xs-center"><span id = "account_return" class = "lead"></span></div>
