@@ -45,6 +45,7 @@ function checkCookie() {
       $("#up_account_btc").val(getCookie("btc_address"));
       $(".uid").val(getCookie("id"));
       $(".token").val(getCookie("token"));
+      $("#deposit_address").val(getCookie("deposit_address"));
     });
   }else{  // logged out
     $(".dashboard-btn").hide();
