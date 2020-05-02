@@ -40,6 +40,9 @@ function checkCookie() {
     $( document ).ready(function() {
       $("#big_register_button").hide();
       $("#user_welcome").html(getCookie("username"));
+      $("#acc_username").html(getCookie("username"));
+      $("#acc_email").html(getCookie("email"));
+      $("#up_account_btc").val(getCookie("btc_address"));
     });
   }else{  // logged out
     $(".dashboard-btn").hide();
