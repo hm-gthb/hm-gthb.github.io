@@ -15498,6 +15498,7 @@ button.picker__close:focus {
 .card .form-header h3 {
   margin: 0;
   padding: 0.7rem;
+  font-weight: 200;
 }
 
 .call .fa {
