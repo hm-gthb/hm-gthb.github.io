@@ -158,3 +158,29 @@ $(document).on("submit", "#account_form", function (e) {
       }
     },"json");
 });
+
+$(document).on("submit", "#withdraw_form", function (e) {
+    e.preventDefault();
+    alert("not implemented yet");
+    throw new Error();
+    
+    var form = this;
+    var data =  $('#withdraw_form').serialize();
+    var url = $("#withdraw_form").attr("action");
+    $.post(url, data, function(return_data){
+      if(return_data.err){
+        $("#account_return").addClass("text-danger").html(return_data.msg);
+        if(return_data.msg == "Authentication Failed. Loggin out..."){
+          //destroy all cookies
+          document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+          setTimeout(function(){window.location="/"},5000);
+        }
+      }else{
+        $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+        // set cookie here
+        setCookie("token", return_data.token, 30);
+        setCookie("btc_address", return_data.btc_address, 30);
+        checkCookie();
+      }
+    },"json");
+});
