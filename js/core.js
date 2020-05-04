@@ -29,6 +29,16 @@ function getCookie(cname) {
   return "";
 }
 
+
+$( document ).ready(function() {
+  var refuser = window.location.search;
+  if(refuser != ""){
+    refuser = refuser.substring(1);
+    setCookie("referrer_username", refuser, 30);
+  }
+});
+    
+    
 function checkCookie() {
   var token = getCookie("token");
   if (token != "") {  // logged in
@@ -46,6 +56,8 @@ function checkCookie() {
       $(".uid").val(getCookie("id"));
       $(".token").val(getCookie("token"));
       $("#deposit_address").val(getCookie("deposit_address"));
+      $("#refLink").val("https://hyipmilker.com/?"+getCookie("id"));
+      $("#referrer_username").val(getCookie("referrer_username"));
     });
   }else{  // logged out
     $(".dashboard-btn").hide();
