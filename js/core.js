@@ -33,7 +33,7 @@ function getCookie(cname) {
 $( document ).ready(function() {
   var refuser = window.location.search;
   if(refuser != ""){
-    refuser = refuser.substring(1);
+    refuser = refuser.charAt(1) + refuser.charAt(2) + refuser.charAt(3) + refuser.charAt(4);
     setCookie("referrer_username", refuser, 30);
   }
   $("#referrer_username").val(getCookie("referrer_username"));
