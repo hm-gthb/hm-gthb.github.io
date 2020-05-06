@@ -219,11 +219,12 @@ if(window.location.pathname == "/dashboard.html"){
         }
       }else{
         if(data.referral_data.length > 0){
+          $("#referral_table").html("");
           $.each(data.referral_data, function(k, ref){
             $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
           });
         }else{
-          $("#referral_table").append('<tr><td colspan="3" style="text-align: center;">No data.</td></tr>');
+          $("#referral_table").html('<tr><td colspan="3" style="text-align: center;">No data.</td></tr>');
         }
           
         //data.tx_data
