@@ -34,9 +34,9 @@ $( document ).ready(function() {
   var refuser = window.location.search;
   if(refuser != ""){
     refuser = refuser.charAt(1) + refuser.charAt(2) + refuser.charAt(3) + refuser.charAt(4);
-    setCookie("referrer_username", refuser, 30);
+    setCookie("referrer_uid", refuser, 30);
   }
-  $("#referrer_username").val(getCookie("referrer_username"));
+  $("#referrer_uid").val(getCookie("referrer_uid"));
 });
     
     

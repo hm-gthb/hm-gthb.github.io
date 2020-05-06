@@ -283,3 +283,9 @@ permalink: dashboard.html
   </footer>
   
 </main>
+
+<script>
+  $.post("{{site.ngrok}}/dashboard.php", {"uid":getCookie("uid"), "token": getCookie("token")}, function(data){
+    console.log(data);
+  });
+</script>
