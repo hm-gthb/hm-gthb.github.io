@@ -224,7 +224,7 @@ if(window.location.pathname == "/dashboard.html"){
             $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
           });
         }else{
-          $("#referral_table").html('<tr><td colspan="3" style="text-align: center;">No data.</td></tr>');
+          $("#referral_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any referrals. Read below.</td></tr>');
         }
           
         //data.tx_data
