@@ -37,7 +37,7 @@
             <a class="btn btn-primary default-color px-1 small-buttons" data-toggle="modal" data-target="#account_modal">Account <i class="fa fa-user "></i></a>
           </li>
           <li class="nav-item logout-btn">
-            <a class="btn btn-primary danger-color px-1 small-buttons" onclick = "document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });window.location='/';">Logout <i class="fa fa-sign-out "></i></a>
+            <a class="btn btn-primary danger-color px-1 small-buttons" onclick = 'document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });window.location="/";'>Logout <i class="fa fa-sign-out "></i></a>
           </li>
         </ul>
       </nav>
