@@ -225,5 +225,5 @@ if(window.location.pathname == "/dashboard.html"){
         //data.referral_data
       }
     });
-  }
+  });
 }
