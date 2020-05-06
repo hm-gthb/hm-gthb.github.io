@@ -219,7 +219,7 @@ if(window.location.pathname == "/dashboard.html"){
         }
       }else{
         $.each(data.referral_data, function(k, ref){
-          $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" mBtc</td></tr>");
+          $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
         });
         //data.tx_data
         //data.earn_data
