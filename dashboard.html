@@ -286,6 +286,21 @@ permalink: dashboard.html
 
 <script>
   $.post("{{site.ngrok}}/dashboard.php", {"uid":getCookie("id"), "token": getCookie("token")}, function(data){
-    console.log(data);
+    if(return_data.err){
+      if(return_data.msg == "Authentication Failed. Logging out..."){
+        //destroy all cookies
+        destroyAllCookies();
+        alert(return_data.msg);
+        window.location="/";
+      }else{
+        alert("Error loading the data. Please try again in a few moments.");
+      }
+    }else{
+      console.log(data);
+      //data.tx_data
+      //data.earn_data
+      //data.referral_data
+    }
   });
 </script>
+    

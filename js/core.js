@@ -71,6 +71,11 @@ function checkCookie() {
   }
 }
 
+function destroyAllCookies(){
+  document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+}
+
+
 function copyClip(el) {
   /* Get the text field */
   var copyText = document.getElementById(el);
@@ -143,7 +148,7 @@ $(document).on("submit", "#forgot_form", function (e) {
       }else{
         $("#password_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
         //destroy all cookies
-        document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+        destroyAllCookies();
       }
     },"json");
 });
@@ -156,9 +161,9 @@ $(document).on("submit", "#account_form", function (e) {
     $.post(url, data, function(return_data){
       if(return_data.err){
         $("#account_return").addClass("text-danger").html(return_data.msg);
-        if(return_data.msg == "Authentication Failed. Loggin out..."){
+        if(return_data.msg == "Authentication Failed. Logging out..."){
           //destroy all cookies
-          document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+          destroyAllCookies();
           setTimeout(function(){window.location="/"},5000);
         }
       }else{
@@ -182,9 +187,9 @@ $(document).on("submit", "#withdraw_form", function (e) {
     $.post(url, data, function(return_data){
       if(return_data.err){
         $("#account_return").addClass("text-danger").html(return_data.msg);
-        if(return_data.msg == "Authentication Failed. Loggin out..."){
+        if(return_data.msg == "Authentication Failed. Logging out..."){
           //destroy all cookies
-          document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+          destroyAllCookies();
           setTimeout(function(){window.location="/"},5000);
         }
       }else{
