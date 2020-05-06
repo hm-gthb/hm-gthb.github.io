@@ -218,8 +218,8 @@ if(window.location.pathname == "/dashboard.html"){
           alert("Error loading the data. Please try again in a few moments.");
         }
       }else{
+          console.log(data.referral_data);
         $.each(data.referral_data, function(k, ref){
-          console.log(ref);
           $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" mBtc</td></tr>");
         });
         //data.tx_data
