@@ -218,9 +218,14 @@ if(window.location.pathname == "/dashboard.html"){
           alert("Error loading the data. Please try again in a few moments.");
         }
       }else{
-        $.each(data.referral_data, function(k, ref){
-          $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
-        });
+        if(data.referral_data.length > 0){
+          $.each(data.referral_data, function(k, ref){
+            $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
+          });
+        }else{
+          $("#referral_table").append('<tr><td colspan="3" style="text-align: center;">No data.</td></tr>');
+        }
+          
         //data.tx_data
         //data.earn_data
         //data.referral_data
