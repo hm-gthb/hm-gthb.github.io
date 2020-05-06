@@ -201,3 +201,29 @@ $(document).on("submit", "#withdraw_form", function (e) {
       }
     },"json");
 });
+
+  
+if(window.location.pathname == "/dashboard.html"){
+  $( document ).ready(function() {
+    $.post("{{site.ngrok}}/dashboard.php", {"uid":getCookie("id"), "token": getCookie("token")}, function(data){
+      if(data.err){
+        if(data.msg == "Authentication Failed. Logging out..."){
+          //destroy all cookies
+          destroyAllCookies();
+          alert(data.msg);
+          window.location="/";
+        }else{
+          alert("Error loading the data. Please try again in a few moments.");
+        }
+      }else{
+        console.log(data);
+        $.each(data.referral_data, function(k, ref){
+          $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" mBtc</td></tr>");
+        });
+        //data.tx_data
+        //data.earn_data
+        //data.referral_data
+      }
+    });
+  }
+}
