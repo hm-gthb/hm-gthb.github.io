@@ -204,7 +204,7 @@ $(document).on("submit", "#withdraw_form", function (e) {
 
   
 if(window.location.pathname == "/dashboard.html"){
-  $( document ).ready(function() {
+  $( document ).ready(function(){
     $.post("{{site.ngrok}}/dashboard.php", {"uid":getCookie("id"), "token": getCookie("token")}, function(data){
       if(data.err){
         if(data.msg == "Authentication Failed. Logging out..."){
