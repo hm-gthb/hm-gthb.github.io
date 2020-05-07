@@ -219,13 +219,14 @@ if(window.location.pathname == "/dashboard.html"){
         }
       }else{
         
-        var total_investment, earned, ref_count, ref_income = 0;
+        var total_investment = 0;
+        var earned = 0;
+        var ref_income = 0;
         
         
         if(data.referral_data.length > 0){
           $("#referral_table").html("");
           $.each(data.referral_data, function(k, ref){
-            ref_count = ref_count + 1;
             $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
           });
         }else{
@@ -285,7 +286,7 @@ if(window.location.pathname == "/dashboard.html"){
         $("#total_investment_usd").html((total_investment * 8000).toFixed(2)); //$
         $("#earned").html(earned.toFixed(8));
         $("#earned_usd").html((earned * 8000).toFixed(2)); //$
-        $("#ref_count").html(ref_count);
+        $("#ref_count").html(data.referral_data.length);
         $("#ref_income").html(ref_income.toFixed(8));
         $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
         
