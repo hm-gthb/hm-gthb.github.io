@@ -64,7 +64,7 @@
 
               <div class="md-form">
                 <i class="fa fa-lock prefix"></i>
-                <input type="password" id="login_password" name = "password" class="form-control" required>
+                <input type="password" id="login_password" name = "password" class="form-control" minlength="3" maxlength="30" required>
                 <label for="login_password">Password</label>
               </div>
 
@@ -156,8 +156,8 @@
                     <div style = " margin-top:20px;">Confirm password:</div>
                   </div>
                   <div style = "width:60%; float:left">
-                    <div style = " margin-top:5px;"><input type="password" id="up_account_pass1" name="up_account_pass1" style="border: 1px solid lightblue; padding: 4px;"></div>
-                    <div style = " margin-top:5px;"><input type="password" id="up_account_pass2" name="up_account_pass2" style="border: 1px solid lightblue; padding: 4px;"></div>
+                    <div style = " margin-top:5px;"><input type="password" id="up_account_pass1" minlength="3" maxlength="30" name="up_account_pass1" style="border: 1px solid lightblue; padding: 4px;"></div>
+                    <div style = " margin-top:5px;"><input type="password" id="up_account_pass2" minlength="3" maxlength="30" name="up_account_pass2" style="border: 1px solid lightblue; padding: 4px;"></div>
                   </div>
                   <input type="hidden" class="uid" name="uid">
                   <input type="hidden" class="token" name="token">
@@ -190,7 +190,7 @@
 
               <div class="md-form">
                 <i class="fa fa-user prefix"></i>
-                <input type="text" id="register_username" name="register_username"  spellcheck="false" class="form-control" required>
+                <input type="text" id="register_username" name="register_username"  spellcheck="false" class="form-control" minlength="3" maxlength="30" required>
                 <label for="register_username">Username</label>
               </div>
 
@@ -202,13 +202,13 @@
 
               <div class="md-form">
                 <i class="fa fa-lock prefix"></i>
-                <input type="password" id="register_password" name="register_password" class="form-control" required>
+                <input type="password" id="register_password" name="register_password" class="form-control" minlength="3" maxlength="30" required>
                 <label for="register_password">Password</label>
               </div>
               
               <div class="md-form">
                 <i class="fa fa-lock prefix"></i>
-                <input type="password" id="register_password2" name="register_password2" class="form-control" required>
+                <input type="password" id="register_password2" name="register_password2" class="form-control" minlength="3" maxlength="30" required>
                 <label for="register_password2">Confirm password</label>
               </div>
 
