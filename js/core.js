@@ -84,6 +84,9 @@ function destroyAllCookies(){
   document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
 }
 
+function calculateBtc(){
+  
+}
 
 function copyClip(el) {
   /* Get the text field */
@@ -234,7 +237,7 @@ if(window.location.pathname == "/dashboard.html"){
         if(data.referral_data.length > 0){
           $("#referral_table").html("");
           $.each(data.referral_data, function(k, ref){
-            $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td><span class = 'btc_amount'>"+parseFloat(ref.amount).toFixed(8)+"</span> <span class = 'btc_unit'> BTC</span></td></tr>");
+            $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td><span class = 'btc_amount' data-btc = '"+parseFloat(ref.amount).toFixed(8)+"'></span> <span class = 'btc_unit'> BTC</span></td></tr>");
           });
         }else{
           $("#referral_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any referrals. Read below.</td></tr>');
@@ -262,20 +265,21 @@ if(window.location.pathname == "/dashboard.html"){
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td><span class = 'btc_amount'>"+earn.amount+"</span><br><span class = 'btc_unit'> BTC</span></td></tr>");
+            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td><span class = 'btc_amount' data-btc = '"+earn.amount+"'></span><br><span class = 'btc_unit'> BTC</span></td></tr>");
             
           });
         }else{
           $("#earn_table").html('<tr><td colspan="3" style="text-align: center;">You haven\'t earned anything, yet.</td></tr>');
         }
         
-        $("#earned").html(earned.toFixed(8));
-        $("#earned_usd").html((earned * 8000).toFixed(2)); //$
-        $("#ref_income").html(ref_income.toFixed(8));
-        $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
-        $("#total_earned").html((earned+ref_income).toFixed(8)); //$
-        var tot_avail = (earned+ref_income-0.0005).toFixed(8);
-        $("#total_available").html(tot_avail); //$
+        $("#earned").data("btc", earned.toFixed(8));
+        $("#earned_usd").html((earned * data.exchange).toFixed(2) + "$"); //$
+        $("#ref_income").data("btc", ref_income.toFixed(8));
+        $("#ref_income_usd").html((ref_income * data.exchange).toFixed(2) + "$"); //$
+        $("#total_earned").html((earned+ref_income).toFixed(8) + "$"); //$
+        $("#withdraw_fee").attr("btc", data.fee); //$
+        var tot_avail = (earned+ref_income-data.fee).toFixed(8);
+        $("#total_available").data("btc", tot_avail);
         if(tot_avail < 0){
           $("#anymore").hide();
           $("#anyamount").show();
@@ -315,19 +319,20 @@ if(window.location.pathname == "/dashboard.html"){
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td><span class = 'btc_amount'>"+tx.amount+"</span><br><span class = 'btc_unit'> BTC</span></td><td>"+payment_link+"</td></tr>");
+            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td><span class = 'btc_amount' data-btc = '"+tx.amount+"'></span><br><span class = 'btc_unit'> BTC</span></td><td>"+payment_link+"</td></tr>");
             
           });
         }else{
           $("#tx_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any deposits.</td></tr>');
         }
-        $("#total_investment").html(total_investment.toFixed(8));
-        $("#total_investment_usd").html((total_investment * 8000).toFixed(2)); //$
+        $("#total_investment").data("btc", total_investment.toFixed(8));
+        $("#total_investment_usd").html((total_investment * data.exchange).toFixed(2) + "$"); //$
           
         //data.tx_data
         //data.earn_data
         //data.referral_data
         checkCookie();
+        calculateBtc();
       }
     },"json");
   });
