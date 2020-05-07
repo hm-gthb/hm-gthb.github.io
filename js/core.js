@@ -284,7 +284,7 @@ if(window.location.pathname == "/dashboard.html"){
         $("#ref_income").data("btc", ref_income.toFixed(8));
         $("#ref_income_usd").html((ref_income * data.exchange).toFixed(2) + "$"); //$
         $("#total_earned").data("btc", (earned+ref_income).toFixed(8));
-        $(".cls_withdraw_fee").data("btc", data.fee);
+        $("#withdraw_fee").data("btc", data.fee);
         var tot_avail = (earned+ref_income-data.fee).toFixed(8);
         $("#total_available").data("btc", tot_avail);
         if(tot_avail < 0){
@@ -332,7 +332,7 @@ if(window.location.pathname == "/dashboard.html"){
         }else{
           $("#tx_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any deposits.</td></tr>');
         }
-        $("#total_investment").data("btc", total_investment.toFixed(8));
+        $("#total_investment").data("btc", parseFloat(total_investment.toFixed(8)));
         $("#total_investment_usd").html((total_investment * data.exchange).toFixed(2) + "$"); //$
           
         //data.tx_data
