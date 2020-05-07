@@ -16561,6 +16561,7 @@ ul.striped li:last-child {
      padding: 10px 5px 10px 5px;
   }
  .tx-tag{width:35px!important; }
+ .hidden-xs{display:none!important}
 }   
 
 
