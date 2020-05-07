@@ -195,6 +195,7 @@ $(document).on("submit", "#account_form", function (e) {
         setCookie("btc_address", return_data.btc_address, 30);
         setCookie("btc_unit", return_data.btc_unit, 30);
         checkCookie();
+        calculateBtc();
       }
     },"json");
 });
