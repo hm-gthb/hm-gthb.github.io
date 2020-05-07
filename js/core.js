@@ -227,6 +227,25 @@ if(window.location.pathname == "/dashboard.html"){
           $("#referral_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any referrals. Read below.</td></tr>');
         }
           
+        if(data.earn_data.length > 0){
+          $("#earn_table").html("");
+          $.each(data.earn_data, function(k, earn){
+            var type;
+            if(earn.label == "investment"){type = "green";}else if(earn.label == "referral"){type = "blue";}
+            $("#earn_table").append("
+            
+                      <tr>
+                        <td>"+earn.register_date.substring(0,10)+"<br>"+earn.register_date.substring(10,5)+"</td>
+                        <td><span class='tag "+type+" income-tag'>"+earn.label+"</td>
+                        <td>"+earn.amount+"<br>BTC</td>
+                      </tr>
+                    ");
+            
+          });
+        }else{
+          $("#earn_table").html('<tr><td colspan="3" style="text-align: center;">You haven\'t earned anything, yet.</td></tr>');
+        }
+          
         //data.tx_data
         //data.earn_data
         //data.referral_data
