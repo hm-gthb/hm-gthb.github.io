@@ -16560,9 +16560,9 @@ ul.striped li:last-child {
      font-size: 9px!important;
      padding: 10px 5px 10px 5px;
   }
- .income-tag{width:35px; }
+ .tx-tag{width:35px!important; }
 }   
 
 
-.income-tag{font-weight:300; width:95px; padding: 5px; margin-top: 10px;}
+.income-tag,.tx-tag{font-weight:300; width:95px; padding: 5px; margin-top: 10px;}
 .external-link{ margin-top: 10px; display:block;}
