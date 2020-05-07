@@ -265,7 +265,16 @@ if(window.location.pathname == "/dashboard.html"){
         $("#ref_income").html(ref_income.toFixed(8));
         $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
         $("#total_earned").html((earned+ref_income).toFixed(8)); //$
-        $("#total_available").html((earned+ref_income-0.0005).toFixed(8)); //$
+        var tot_avail = (earned+ref_income-0.0005).toFixed(8);
+        $("#total_available").html(tot_avail); //$
+        if(tot_avail < 0){
+          $("#anymore").hide();
+          $("#anyamount").show();
+        }else{
+          $("#anymore").show();
+          $("#anyamount").hide();
+        }
+          
         
           
           
