@@ -85,8 +85,13 @@ function destroyAllCookies(){
 }
 
 function calculateBtc(){
+  var opt = getCookie("btc_unit");
   $.each($('[data-btc]'), function(k, v){
-    console.log(v.data("btc"));
+    if(opt == "btc"){
+      $(v).html($(v).data("btc"));
+    }else if(opt == "mbtc"){
+      $(v).html( Math.round(( $(v).data("btc") *1000)*100000000)/100000000 );
+    }
   });
 }
 
@@ -191,6 +196,8 @@ $(document).on("submit", "#account_form", function (e) {
       }
     },"json");
 });
+
+$(document).on("click", ".btc_amount", function (e) {alert($(this).data("btc"));});
 
 $(document).on("submit", "#withdraw_form", function (e) {
     e.preventDefault();
