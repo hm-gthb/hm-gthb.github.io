@@ -253,6 +253,10 @@ if(window.location.pathname == "/dashboard.html"){
             $("#earned_usd").html((earned * 8000).toFixed(2)); //$
             $("#ref_income").html(ref_income.toFixed(8));
             $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
+            
+            $("#total_earned").html((earned+ref_income).toFixed(8)); //$
+            $("#total_available").html((earned+ref_income-0.0005).toFixed(8)); //$
+            
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
