@@ -232,7 +232,10 @@ if(window.location.pathname == "/dashboard.html"){
           $.each(data.earn_data, function(k, earn){
             var type;
             if(earn.label == "investment"){type = "green";}else if(earn.label == "referral"){type = "blue";}
-            $("#earn_table").append("<tr><td>"+earn.register_date.substring(0,10)+"<br>"+earn.register_date.substring(10,5)+"</td><td><span class='tag "+type+" income-tag'>"+earn.label+"</td><td>"+earn.amount+"<br>BTC</td></tr>");
+            var date = new Date(earn.timestamp * 1000);
+            var hours = date.getHours();
+            var minutes = "0" + date.getMinutes();
+            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+earn.label+"</td><td>"+earn.amount+"<br>BTC</td></tr>");
             
           });
         }else{
