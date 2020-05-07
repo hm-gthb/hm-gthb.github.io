@@ -86,11 +86,13 @@ function destroyAllCookies(){
 
 function calculateBtc(){
   var opt = getCookie("btc_unit");
-  $.each($('[data-btc]'), function(k, v){
-    if(opt == "btc"){
-      $(v).html($(v).data("btc"));
-    }else if(opt == "mbtc"){
-      $(v).html( Math.round(( parseFloat($(v).data("btc")) *1000)*100000000)/100000000 );
+  $('*').filter(function() {
+    if($(this).data('btc') !== undefined){
+      if(opt == "btc"){
+        $(this).html($(this).data("btc"));
+      }else if(opt == "mbtc"){
+        $(this).html( Math.round(( parseFloat($(this).data("btc")) *1000)*100000000)/100000000 );
+      }
     }
   });
 }
@@ -279,13 +281,13 @@ if(window.location.pathname == "/dashboard.html"){
           $("#earn_table").html('<tr><td colspan="3" style="text-align: center;">You haven\'t earned anything, yet.</td></tr>');
         }
         
-        $("#earned").data("btc", earned.toFixed(8));
+        $("#earned").data("btc", parseFloat(earned).toFixed(8));
         $("#earned_usd").html((earned * data.exchange).toFixed(2) + "$"); //$
-        $("#ref_income").data("btc", ref_income.toFixed(8));
+        $("#ref_income").data("btc", parseFloat(ref_income).toFixed(8));
         $("#ref_income_usd").html((ref_income * data.exchange).toFixed(2) + "$"); //$
-        $("#total_earned").data("btc", (earned+ref_income).toFixed(8));
+        $("#total_earned").data("btc", parseFloat(earned+ref_income).toFixed(8));
         $("#withdraw_fee").data("btc", data.fee);
-        var tot_avail = (earned+ref_income-data.fee).toFixed(8);
+        var tot_avail = parseFloat(earned+ref_income-data.fee).toFixed(8);
         $("#total_available").data("btc", tot_avail);
         if(tot_avail < 0){
           $("#anymore").hide();
@@ -332,7 +334,7 @@ if(window.location.pathname == "/dashboard.html"){
         }else{
           $("#tx_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any deposits.</td></tr>');
         }
-        $("#total_investment").data("btc", parseFloat(total_investment.toFixed(8)));
+        $("#total_investment").data("btc", parseFloat(total_investment).toFixed(8));
         $("#total_investment_usd").html((total_investment * data.exchange).toFixed(2) + "$"); //$
           
         //data.tx_data
