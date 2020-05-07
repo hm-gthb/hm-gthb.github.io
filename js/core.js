@@ -281,13 +281,13 @@ if(window.location.pathname == "/dashboard.html"){
         //data.tx_data
         //data.earn_data
         //data.referral_data
-        $("#total_investment").html(total_investment);
-        $("#total_investment_usd").html(total_investment * 8000); //$
-        $("#earned").html(earned);
-        $("#earned_usd").html(earned * 8000); //$
+        $("#total_investment").html(total_investment.toFixed(8));
+        $("#total_investment_usd").html((total_investment * 8000).toFixed(2)); //$
+        $("#earned").html(earned.toFixed(8));
+        $("#earned_usd").html((earned * 8000).toFixed(2)); //$
         $("#ref_count").html(ref_count);
-        $("#ref_income").html(ref_income);
-        $("#ref_income_usd").html(ref_income * 8000); //$
+        $("#ref_income").html(ref_income.toFixed(8));
+        $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
         
       }
     },"json");
