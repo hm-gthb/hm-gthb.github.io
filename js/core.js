@@ -219,9 +219,6 @@ if(window.location.pathname == "/dashboard.html"){
         }
       }else{
         
-        var total_investment = 0;
-        var earned = 0;
-        var ref_income = 0;
         
         $("#ref_count").html(data.referral_data.length);
         
@@ -234,15 +231,22 @@ if(window.location.pathname == "/dashboard.html"){
           $("#referral_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any referrals. Read below.</td></tr>');
         }
           
+
+
+
+        var earned = 0;
+        var ref_income = 0;
         if(data.earn_data.length > 0){
           $("#earn_table").html("");
           $.each(data.earn_data, function(k, earn){
-            var type;
+            var type,label;
             if(earn.label == "investment"){
               type = "green";
+              label = "Investment"
               if(earn.used_by == 0){earned += parseFloat(earn.amount);}
             }else if(earn.label == "referral"){
               type = "blue";
+              label = "Referral"
               if(earn.used_by == 0){ref_income += parseFloat(earn.amount);}
             }
             $("#earned").html(earned.toFixed(8));
@@ -252,26 +256,33 @@ if(window.location.pathname == "/dashboard.html"){
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+earn.label+"</td><td>"+earn.amount+"<br>BTC</td></tr>");
+            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td>"+earn.amount+"<br>BTC</td></tr>");
             
           });
         }else{
           $("#earn_table").html('<tr><td colspan="3" style="text-align: center;">You haven\'t earned anything, yet.</td></tr>');
         }
           
+          
+          
+          
+        var total_investment = 0;
         if(data.tx_data.length > 0){
           $("#tx_table").html("");
           $.each(data.tx_data, function(k, tx){
-            var type,ico;
+            var type,ico,label;
             if(tx.type == "deposit"){
               type = "green";
               ico = "up";
+              label = "Deposit";
             }else if(tx.type == "red"){
               type = "blue";
               ico = "down";
+              label = "Withdraw";
             }else if(tx.type == "orange"){
               type = "blue";
               ico = "left";
+              label = "Leftover";
             }
             if(tx.active == 1){total_investment+=parseFloat(tx.amount);}
             $("#total_investment").html(total_investment.toFixed(8));
@@ -279,7 +290,7 @@ if(window.location.pathname == "/dashboard.html"){
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+tx.type+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td>"+tx.amount+"<br>BTC</td><td><a class = 'external-link'><i class = 'fa fa-external-link'></i></a></td></tr>");
+            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td>"+tx.amount+"<br>BTC</td><td><a class = 'external-link'><i class = 'fa fa-external-link'></i></a></td></tr>");
             
           });
         }else{
