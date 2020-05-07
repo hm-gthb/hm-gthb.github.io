@@ -225,7 +225,7 @@ if(window.location.pathname == "/dashboard.html"){
         if(data.referral_data.length > 0){
           $("#referral_table").html("");
           $.each(data.referral_data, function(k, ref){
-            ref_count++;
+            ref_count = ref_count + 1;
             $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
           });
         }else{
@@ -238,10 +238,10 @@ if(window.location.pathname == "/dashboard.html"){
             var type;
             if(earn.label == "investment"){
               type = "green";
-              if(earn.used_by == 0){earned += earn.amount;}
+              if(earn.used_by == 0){earned += parseFloat(earn.amount);}
             }else if(earn.label == "referral"){
               type = "blue";
-              if(earn.used_by == 0){ref_income += earn.amount;}
+              if(earn.used_by == 0){ref_income += parseFloat(earn.amount);}
             }
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
@@ -267,7 +267,7 @@ if(window.location.pathname == "/dashboard.html"){
               type = "blue";
               ico = "left";
             }
-            if(tx.active == 1){total_investment+=tx.amount;}
+            if(tx.active == 1){total_investment+=parseFloat(tx.amount);}
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
