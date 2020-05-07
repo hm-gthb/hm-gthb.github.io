@@ -262,17 +262,17 @@ if(window.location.pathname == "/dashboard.html"){
             if(earn.label == "investment"){
               type = "green";
               label = "Investment"
-              if(earn.used_by == 0){earned += parseFloat(earn.amount);}
+              if(earn.used_by == "0"){earned += parseFloat(earn.amount);}
             }else if(earn.label == "referral"){
               type = "blue";
               label = "Referral"
-              if(earn.used_by == 0){ref_income += parseFloat(earn.amount);}
+              if(earn.used_by == "0"){ref_income += parseFloat(earn.amount);}
             }
             
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td><span class = 'btc_amount' data-btc = '"+earn.amount+"'></span><br><span class = 'btc_unit'> BTC</span></td></tr>");
+            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td><span class = 'btc_amount' data-btc = '"+parseFloat(earn.amount).toFixed(8)+"'></span><br><span class = 'btc_unit'> BTC</span></td></tr>");
             
           });
         }else{
@@ -322,11 +322,11 @@ if(window.location.pathname == "/dashboard.html"){
               label = "Leftover";
               payment_link = "-";
             }
-            if(tx.active == 1){total_investment+=parseFloat(tx.amount);}
+            if(tx.active == "1"){total_investment+=parseFloat(tx.amount);}
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td><span class = 'btc_amount' data-btc = '"+tx.amount+"'></span><br><span class = 'btc_unit'> BTC</span></td><td>"+payment_link+"</td></tr>");
+            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td><span class = 'btc_amount' data-btc = '"+parseFloat(tx.amount).toFixed(8)+"'></span><br><span class = 'btc_unit'> BTC</span></td><td>"+payment_link+"</td></tr>");
             
           });
         }else{
