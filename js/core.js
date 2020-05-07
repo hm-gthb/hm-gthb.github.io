@@ -177,7 +177,7 @@ $(document).on("submit", "#forgot_form", function (e) {
 
 $(document).on("submit", "#account_form", function (e) {
     e.preventDefault();
-    if($("#up_account_pass1").val() == $("#up_account_pass1").val()){
+    if($("#up_account_pass1").val() == $("#up_account_pass2").val()){
       var form = this;
       var data =  $('#account_form').serialize();
       var url = $("#account_form").attr("action");
