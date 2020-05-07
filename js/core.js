@@ -85,7 +85,7 @@ function destroyAllCookies(){
 }
 
 function calculateBtc(){
-  
+  console.log($('[data-btc]'));
 }
 
 function copyClip(el) {
