@@ -277,6 +277,7 @@ if(window.location.pathname == "/dashboard.html"){
               ico = "up";
               label = "Deposit";
               payment_link = "-";
+              payment_link = "<a target = '_blank' href = 'payment.html?"+tx.txid+"' title = 'Payment Proof' class = 'external-link'><i class = 'fa fa-external-link'></i></a>";
             }else if(tx.type == "red"){
               type = "blue";
               ico = "down";
