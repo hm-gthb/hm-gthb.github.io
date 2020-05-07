@@ -177,27 +177,31 @@ $(document).on("submit", "#forgot_form", function (e) {
 
 $(document).on("submit", "#account_form", function (e) {
     e.preventDefault();
-    var form = this;
-    var data =  $('#account_form').serialize();
-    var url = $("#account_form").attr("action");
-    $.post(url, data, function(return_data){
-      if(return_data.err){
-        $("#account_return").addClass("text-danger").html(return_data.msg);
-        if(return_data.msg == "Authentication Failed. Logging out..."){
-          //destroy all cookies
-          destroyAllCookies();
-          setTimeout(function(){window.location="/"},5000);
+    if($("#up_account_pass1").val() == $("#up_account_pass1").val()){
+      var form = this;
+      var data =  $('#account_form').serialize();
+      var url = $("#account_form").attr("action");
+      $.post(url, data, function(return_data){
+        if(return_data.err){
+          $("#account_return").addClass("text-danger").html(return_data.msg);
+          if(return_data.msg == "Authentication Failed. Logging out..."){
+            //destroy all cookies
+            destroyAllCookies();
+            setTimeout(function(){window.location="/"},5000);
+          }
+        }else{
+          $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+          // set cookie here
+          setCookie("token", return_data.token, 30);
+          setCookie("btc_address", return_data.btc_address, 30);
+          setCookie("btc_unit", return_data.btc_unit, 30);
+          checkCookie();
+          calculateBtc();
         }
-      }else{
-        $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
-        // set cookie here
-        setCookie("token", return_data.token, 30);
-        setCookie("btc_address", return_data.btc_address, 30);
-        setCookie("btc_unit", return_data.btc_unit, 30);
-        checkCookie();
-        calculateBtc();
-      }
-    },"json");
+      },"json");
+    }else{
+      $("#account_return").removeClass("text-success").addClass("text-danger").html("Passwords don't match.");
+    }
 });
 
 $(document).on("submit", "#withdraw_form", function (e) {
