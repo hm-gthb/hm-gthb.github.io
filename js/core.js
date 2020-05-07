@@ -197,8 +197,6 @@ $(document).on("submit", "#account_form", function (e) {
     },"json");
 });
 
-$(document).on("click", ".btc_amount", function (e) {alert($(this).data("btc"));});
-
 $(document).on("submit", "#withdraw_form", function (e) {
     e.preventDefault();
     alert("not implemented yet");
@@ -346,3 +344,6 @@ if(window.location.pathname == "/dashboard.html"){
     },"json");
   });
 }
+
+
+$(document).on("click", ".btc_amount", function (e) {alert($(this).data("btc"));});
