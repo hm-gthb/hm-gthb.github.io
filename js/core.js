@@ -327,7 +327,7 @@ if(window.location.pathname == "/dashboard.html"){
         //data.tx_data
         //data.earn_data
         //data.referral_data
-        
+        checkCookie();
       }
     },"json");
   });
