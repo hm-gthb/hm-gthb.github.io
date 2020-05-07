@@ -54,10 +54,10 @@ permalink: dashboard.html
               
               
               <div class = "lead">
-                You have <span class = "tag huge-tag green">1.14 mBtc</span> available for withdrawal from your profits. 
+                You have <span id="total_earned" class = "tag huge-tag green"></span> BTC available for withdrawal from your profits. 
                 If you exceed this amount, one or more of your deposits will be used to cover the exceeding amount. 
-                Considering the current bitcoin network fee of <span class = "tag huge-tag red">-0.5 mBtc</span> withdrawing 
-                anymore than <span class = "tag huge-tag orange">0.64 mBtc</span> 
+                Considering the current bitcoin network fee of <span class = "tag huge-tag red">-0.0005 btc</span> withdrawing 
+                anymore than <span id="total_available" class = "tag huge-tag orange"></span> BTC
                 any amount 
                 will cause a loss in your balance and reset the interest timer.
               </div>
@@ -83,7 +83,7 @@ permalink: dashboard.html
 <main class="white">
   <div class="container ">
     <div class="lead" style="font-size: 32px;">
-      <div class="mt-1 pt-1">Welcome to your dashboard, <span id="user_welcome">qwe</span>.</div>
+      <div class="mt-1 pt-1">Welcome to your dashboard, <span id="user_welcome"></span>.</div>
     </div>
     <br>
     <section class="section section-intro">
