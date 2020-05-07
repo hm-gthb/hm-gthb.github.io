@@ -271,18 +271,22 @@ if(window.location.pathname == "/dashboard.html"){
           $("#tx_table").html("");
           $.each(data.tx_data, function(k, tx){
             var type,ico,label;
+            var payment_link;
             if(tx.type == "deposit"){
               type = "green";
               ico = "up";
               label = "Deposit";
+              payment_link = "-";
             }else if(tx.type == "red"){
               type = "blue";
               ico = "down";
               label = "Withdraw";
+              payment_link = "<a target = '_blank' href = 'payment.html?"+tx.txid+"' title = 'Payment Proof' class = 'external-link'><i class = 'fa fa-external-link'></i></a>";
             }else if(tx.type == "orange"){
               type = "blue";
               ico = "left";
               label = "Leftover";
+              payment_link = "-";
             }
             if(tx.active == 1){total_investment+=parseFloat(tx.amount);}
             $("#total_investment").html(total_investment.toFixed(8));
@@ -290,7 +294,7 @@ if(window.location.pathname == "/dashboard.html"){
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td>"+tx.amount+"<br>BTC</td><td><a class = 'external-link'><i class = 'fa fa-external-link'></i></a></td></tr>");
+            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td>"+tx.amount+"<br>BTC</td><td>"+payment_link+"</td></tr>");
             
           });
         }else{
