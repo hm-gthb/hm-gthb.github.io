@@ -242,6 +242,30 @@ if(window.location.pathname == "/dashboard.html"){
           $("#earn_table").html('<tr><td colspan="3" style="text-align: center;">You haven\'t earned anything, yet.</td></tr>');
         }
           
+        if(data.tx_data.length > 0){
+          $("#tx_table").html("");
+          $.each(data.tx_data, function(k, tx){
+            var type,ico;
+            if(tx.type == "deposit"){
+              type = "green";
+              ico = "up";
+            }else if(tx.type == "red"){
+              type = "blue";
+              ico = "down";
+            }else if(tx.type == "orange"){
+              type = "blue";
+              ico = "left";
+            }
+            var date = new Date(tx.timestamp * 1000);
+            var hours = date.getHours();
+            var minutes = "0" + date.getMinutes();
+            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+tx.type+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td>"+tx.amount+"<br>BTC</td><td><a class = 'external-link'><i class = 'fa fa-external-link'></i></a></td></tr>");
+            
+          });
+        }else{
+          $("#tx_table").html('<tr><td colspan="3" style="text-align: center;">You don\' have any deposits.</td></tr>');
+        }
+          
         //data.tx_data
         //data.earn_data
         //data.referral_data
