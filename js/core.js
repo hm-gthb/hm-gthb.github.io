@@ -223,6 +223,7 @@ if(window.location.pathname == "/dashboard.html"){
         var earned = 0;
         var ref_income = 0;
         
+        $("#ref_count").html(data.referral_data.length);
         
         if(data.referral_data.length > 0){
           $("#referral_table").html("");
@@ -244,6 +245,10 @@ if(window.location.pathname == "/dashboard.html"){
               type = "blue";
               if(earn.used_by == 0){ref_income += parseFloat(earn.amount);}
             }
+            $("#earned").html(earned.toFixed(8));
+            $("#earned_usd").html((earned * 8000).toFixed(2)); //$
+            $("#ref_income").html(ref_income.toFixed(8));
+            $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
@@ -269,6 +274,8 @@ if(window.location.pathname == "/dashboard.html"){
               ico = "left";
             }
             if(tx.active == 1){total_investment+=parseFloat(tx.amount);}
+            $("#total_investment").html(total_investment.toFixed(8));
+            $("#total_investment_usd").html((total_investment * 8000).toFixed(2)); //$
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
@@ -282,13 +289,6 @@ if(window.location.pathname == "/dashboard.html"){
         //data.tx_data
         //data.earn_data
         //data.referral_data
-        $("#total_investment").html(total_investment.toFixed(8));
-        $("#total_investment_usd").html((total_investment * 8000).toFixed(2)); //$
-        $("#earned").html(earned.toFixed(8));
-        $("#earned_usd").html((earned * 8000).toFixed(2)); //$
-        $("#ref_count").html(data.referral_data.length);
-        $("#ref_income").html(ref_income.toFixed(8));
-        $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
         
       }
     },"json");
