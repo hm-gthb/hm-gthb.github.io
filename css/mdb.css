@@ -16561,3 +16561,7 @@ ul.striped li:last-child {
      padding: 10px 5px 10px 5px;
   }
 }   
+
+
+.income-tag{font-weight:300; width:90px; padding: 5px; margin-top: 10px;}
+.external-link{ margin-top: 10px; display:block;}
