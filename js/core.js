@@ -90,7 +90,7 @@ function calculateBtc(){
     if(opt == "btc"){
       $(v).html($(v).data("btc"));
     }else if(opt == "mbtc"){
-      $(v).html( Math.round(( $(v).data("btc") *1000)*100000000)/100000000 );
+      $(v).html( Math.round(( parseFloat($(v).data("btc")) *1000)*100000000)/100000000 );
     }
   });
 }
