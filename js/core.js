@@ -249,13 +249,6 @@ if(window.location.pathname == "/dashboard.html"){
               label = "Referral"
               if(earn.used_by == 0){ref_income += parseFloat(earn.amount);}
             }
-            $("#earned").html(earned.toFixed(8));
-            $("#earned_usd").html((earned * 8000).toFixed(2)); //$
-            $("#ref_income").html(ref_income.toFixed(8));
-            $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
-            
-            $("#total_earned").html((earned+ref_income).toFixed(8)); //$
-            $("#total_available").html((earned+ref_income-0.0005).toFixed(8)); //$
             
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
@@ -266,6 +259,14 @@ if(window.location.pathname == "/dashboard.html"){
         }else{
           $("#earn_table").html('<tr><td colspan="3" style="text-align: center;">You haven\'t earned anything, yet.</td></tr>');
         }
+        
+        $("#earned").html(earned.toFixed(8));
+        $("#earned_usd").html((earned * 8000).toFixed(2)); //$
+        $("#ref_income").html(ref_income.toFixed(8));
+        $("#ref_income_usd").html((ref_income * 8000).toFixed(2)); //$
+        $("#total_earned").html((earned+ref_income).toFixed(8)); //$
+        $("#total_available").html((earned+ref_income-0.0005).toFixed(8)); //$
+        
           
           
           
