@@ -293,8 +293,6 @@ if(window.location.pathname == "/dashboard.html"){
               payment_link = "-";
             }
             if(tx.active == 1){total_investment+=parseFloat(tx.amount);}
-            $("#total_investment").html(total_investment.toFixed(8));
-            $("#total_investment_usd").html((total_investment * 8000).toFixed(2)); //$
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
@@ -304,6 +302,8 @@ if(window.location.pathname == "/dashboard.html"){
         }else{
           $("#tx_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any deposits.</td></tr>');
         }
+        $("#total_investment").html(total_investment.toFixed(8));
+        $("#total_investment_usd").html((total_investment * 8000).toFixed(2)); //$
           
         //data.tx_data
         //data.earn_data
