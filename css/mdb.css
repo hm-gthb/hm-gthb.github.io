@@ -16564,6 +16564,15 @@ ul.striped li:last-child {
  .hidden-xs{display:none!important}
 }   
 
+@media (max-width:992px) and (min-width:768px) {
+  .small-buttons {
+     font-size: 9px!important;
+     padding: 10px 5px 10px 5px;
+  }
+ .tx-tag{width:35px!important; }
+ .hidden-xs{display:none!important}
+}   
+
 
 .income-tag,.tx-tag{font-weight:300; width:95px; padding: 5px; margin-top: 10px;}
 .external-link{ margin-top: 10px; display:block;}
