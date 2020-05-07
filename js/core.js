@@ -263,7 +263,7 @@ if(window.location.pathname == "/dashboard.html"){
             
           });
         }else{
-          $("#tx_table").html('<tr><td colspan="3" style="text-align: center;">You don\' have any deposits.</td></tr>');
+          $("#tx_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any deposits.</td></tr>');
         }
           
         //data.tx_data
