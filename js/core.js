@@ -58,8 +58,10 @@ function checkCookie() {
       $("#up_account_btc").val(getCookie("btc_address"));
       if(getCookie("btc_unit") == "btc"){
         $("#btc_unit_setting_btc").attr("checked", true);
+        $(".btc_unit").html(" BTC");
       }else if(getCookie("btc_unit") == "mbtc"){
         $("#btc_unit_setting_mbtc").attr("checked", true);
+        $(".btc_unit").html(" mBTC");
       }
       $(".uid").val(getCookie("id"));
       $(".token").val(getCookie("token"));
