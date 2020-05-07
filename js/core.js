@@ -225,7 +225,7 @@ if(window.location.pathname == "/dashboard.html"){
         if(data.referral_data.length > 0){
           $("#referral_table").html("");
           $.each(data.referral_data, function(k, ref){
-            $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
+            $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+parseFloat(ref.amount).toFixed(8)+" BTC</td></tr>");
           });
         }else{
           $("#referral_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any referrals. Read below.</td></tr>');
@@ -277,7 +277,6 @@ if(window.location.pathname == "/dashboard.html"){
               ico = "up";
               label = "Deposit";
               payment_link = "-";
-              payment_link = "<a target = '_blank' href = 'payment.html?"+tx.txid+"' title = 'Payment Proof' class = 'external-link'><i class = 'fa fa-external-link'></i></a>";
             }else if(tx.type == "red"){
               type = "blue";
               ico = "down";
