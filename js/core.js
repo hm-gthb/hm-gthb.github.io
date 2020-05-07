@@ -225,7 +225,7 @@ if(window.location.pathname == "/dashboard.html"){
         if(data.referral_data.length > 0){
           $("#referral_table").html("");
           $.each(data.referral_data, function(k, ref){
-            $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+parseFloat(ref.amount).toFixed(8)+" BTC</td></tr>");
+            $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td><span class = 'btc_amount'>"+parseFloat(ref.amount).toFixed(8)+"</span> <span class = 'btc_unit'>BTC</span></td></tr>");
           });
         }else{
           $("#referral_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any referrals. Read below.</td></tr>');
@@ -253,7 +253,7 @@ if(window.location.pathname == "/dashboard.html"){
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td>"+earn.amount+"<br>BTC</td></tr>");
+            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td><span class = 'btc_amount'>"+earn.amount+"</span><br><span class = 'btc_unit'>BTC</span></td></tr>");
             
           });
         }else{
@@ -306,7 +306,7 @@ if(window.location.pathname == "/dashboard.html"){
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td>"+tx.amount+"<br>BTC</td><td>"+payment_link+"</td></tr>");
+            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td><span class = 'btc_amount'>"+tx.amount+"</span><br><span class = 'btc_unit'>BTC</span></td><td>"+payment_link+"</td></tr>");
             
           });
         }else{
