@@ -218,9 +218,14 @@ if(window.location.pathname == "/dashboard.html"){
           alert("Error loading the data. Please try again in a few moments.");
         }
       }else{
+        
+        var total_investment, earned, ref_count, ref_income = 0;
+        
+        
         if(data.referral_data.length > 0){
           $("#referral_table").html("");
           $.each(data.referral_data, function(k, ref){
+            ref_count++;
             $("#referral_table").append("<tr><td>"+ref.username+"</td><td>"+ref.register_date.substring(0,10)+"</td><td>"+ref.amount+" BTC</td></tr>");
           });
         }else{
@@ -231,7 +236,13 @@ if(window.location.pathname == "/dashboard.html"){
           $("#earn_table").html("");
           $.each(data.earn_data, function(k, earn){
             var type;
-            if(earn.label == "investment"){type = "green";}else if(earn.label == "referral"){type = "blue";}
+            if(earn.label == "investment"){
+              type = "green";
+              if(earn.used_by == 0){earned += earn.amount;}
+            }else if(earn.label == "referral"){
+              type = "blue";
+              if(earn.used_by == 0){ref_income += earn.amount;}
+            }
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
@@ -256,6 +267,7 @@ if(window.location.pathname == "/dashboard.html"){
               type = "blue";
               ico = "left";
             }
+            if(tx.active == 1){total_investment+=tx.amount;}
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
@@ -269,6 +281,14 @@ if(window.location.pathname == "/dashboard.html"){
         //data.tx_data
         //data.earn_data
         //data.referral_data
+        $("#total_investment").html(total_investment);
+        $("#total_investment_usd").html(total_investment * 8000); //$
+        $("#earned").html(earned);
+        $("#earned_usd").html(earned * 8000); //$
+        $("#ref_count").html(ref_count);
+        $("#ref_income").html(ref_income);
+        $("#ref_income_usd").html(ref_income * 8000); //$
+        
       }
     },"json");
   });
