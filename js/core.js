@@ -138,25 +138,30 @@ $(document).on("submit", "#login_form", function (e) {
 
 $(document).on("submit", "#register_form", function (e) {
     e.preventDefault();
-    var form = this;
-    var data =  $('#register_form').serialize();
-    var url = $("#register_form").attr("action");
-    $.post(url, data, function(return_data){
-      if(return_data.err){
-        $("#register_return").addClass("text-danger").html(return_data.msg);
-      }else{
-        $("#register_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
-        // set cookie here
-        setCookie("id", return_data.id, 30);
-        setCookie("username", return_data.username, 30);
-        setCookie("email", return_data.email, 30);
-        setCookie("token", return_data.token, 30);
-        setCookie("register_date", return_data.register_date, 30);
-        setCookie("btc_address", return_data.btc_address, 30);
-        setCookie("deposit_address", return_data.deposit_address, 30);
-        setTimeout(function(){window.location="/dashboard.html"},5000);
-      }
-    },"json");
+    if($("#register_password").val() == $("#register_password2").val()){
+      $("#register_return").html("");
+      var form = this;
+      var data =  $('#register_form').serialize();
+      var url = $("#register_form").attr("action");
+      $.post(url, data, function(return_data){
+        if(return_data.err){
+          $("#register_return").addClass("text-danger").html(return_data.msg);
+        }else{
+          $("#register_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+          // set cookie here
+          setCookie("id", return_data.id, 30);
+          setCookie("username", return_data.username, 30);
+          setCookie("email", return_data.email, 30);
+          setCookie("token", return_data.token, 30);
+          setCookie("register_date", return_data.register_date, 30);
+          setCookie("btc_address", return_data.btc_address, 30);
+          setCookie("deposit_address", return_data.deposit_address, 30);
+          setTimeout(function(){window.location="/dashboard.html"},5000);
+        }
+      },"json");
+    }else{
+      $("#register_return").removeClass("text-success").addClass("text-danger").html("Passwords don't match.");
+    }
 });
 
 $(document).on("submit", "#forgot_form", function (e) {
@@ -178,6 +183,7 @@ $(document).on("submit", "#forgot_form", function (e) {
 $(document).on("submit", "#account_form", function (e) {
     e.preventDefault();
     if($("#up_account_pass1").val() == $("#up_account_pass2").val()){
+      $("#account_return").html("");
       var form = this;
       var data =  $('#account_form').serialize();
       var url = $("#account_form").attr("action");
