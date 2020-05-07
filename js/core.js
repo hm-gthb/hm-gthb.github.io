@@ -56,6 +56,11 @@ function checkCookie() {
       $("#acc_username").html(getCookie("username"));
       $("#acc_email").html(getCookie("email"));
       $("#up_account_btc").val(getCookie("btc_address"));
+      if(getCookie("btc_unit") == "btc"){
+        $("#btc_unit_setting_btc").attr("checked", true);
+      }else if(getCookie("btc_unit") == "mbtc"){
+        $("#btc_unit_setting_mbtc").attr("checked", true);
+      }
       $(".uid").val(getCookie("id"));
       $(".token").val(getCookie("token"));
       $("#deposit_address").val(getCookie("deposit_address"));
@@ -110,6 +115,7 @@ $(document).on("submit", "#login_form", function (e) {
         setCookie("token", return_data.token, 30);
         setCookie("register_date", return_data.register_date, 30);
         setCookie("btc_address", return_data.btc_address, 30);
+        setCookie("btc_unit", return_data.btc_unit, 30);
         setCookie("deposit_address", return_data.deposit_address, 30);
         setTimeout(function(){window.location="/dashboard.html"},5000);
       }
@@ -173,6 +179,7 @@ $(document).on("submit", "#account_form", function (e) {
         // set cookie here
         setCookie("token", return_data.token, 30);
         setCookie("btc_address", return_data.btc_address, 30);
+        setCookie("btc_unit", return_data.btc_unit, 30);
         checkCookie();
       }
     },"json");

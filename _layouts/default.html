@@ -130,11 +130,22 @@
                   <div style = "width:40%; float:left">
                     <div style = " margin-top:15px;">Username:</div>
                     <div style = " margin-top:15px;">Email:</div>
-                    <div style = " margin-top:15px;">BTC Address:</div>
+                    <div style = " margin-top:15px;">Bitcoin Unit:</div>
+                    <div style = " margin-top:15px;">Bitcoin Address:</div>
                   </div>
                   <div style = "width:60%; float:left">
                     <div id = "acc_username" style = " margin-top:15px;"></div>
                     <div id = "acc_email" style = " margin-top:15px;"></div>
+                    <div id = "acc_unit" style = " margin-top:15px;">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="btc_unit_setting" id="btc_unit_setting_btc" value="btc">
+                        <label class="form-check-label" for="btc_unit_setting_btc">BTC</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="btc_unit_setting" id="btc_unit_setting_mbtc" value="mbtc">
+                        <label class="form-check-label" for="btc_unit_setting_mbtc">mBTC</label>
+                      </div>
+                    </div>
                     <div style = " margin-top:5px;"><input type="text" id="up_account_btc"  spellcheck="false" name="up_account_btc" style=" border: 1px solid lightblue; padding: 4px;"></div>
                   </div>
                   <div style = "width:100%;    clear: both;    padding-top: 20px;">
