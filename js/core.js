@@ -284,7 +284,7 @@ if(window.location.pathname == "/dashboard.html"){
         $("#ref_income").data("btc", ref_income.toFixed(8));
         $("#ref_income_usd").html((ref_income * parseFloat(data.exchange)).toFixed(2) + "$"); //$
         $("#total_earned").data("btc", (earned+ref_income).toFixed(8));
-        $("#withdraw_fee").data("btc", data.fee);
+        $("#withdraw_fee").data("btc", parseFloat(data.fee));
         var tot_avail = (earned+ref_income-parseFloat(data.fee)).toFixed(8);
         $("#total_available").data("btc", tot_avail);
         if(tot_avail < 0){
