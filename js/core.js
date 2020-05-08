@@ -210,10 +210,10 @@ $(document).on("submit", "#forgot_form", function (e) {
         $("#password_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
         //destroy all cookies
         destroyAllCookies();
-        
-        $(form).find("button i").attr("class", prev_classes);
-      
       }
+        
+      $(form).find("button i").attr("class", prev_classes);
+      
     },"json");
 });
 
