@@ -265,8 +265,12 @@ $(document).on("submit", "#account_form", function (e) {
 
 $(document).on("submit", "#withdraw_form", function (e) {
     e.preventDefault();    
+
+    // $("#withdraw_amount").val();
+    // çekmek istediği tutarı çekebilecek bakiyesi var mı diye bak uyar falan.
+
     var form = this;
-  
+    
     $(form).find("button").attr("disabled",true);
     var prev_classes = $(form).find("button i").attr("class");
     $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
