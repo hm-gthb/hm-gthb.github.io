@@ -128,6 +128,7 @@ $(document).on("submit", "#login_form", function (e) {
     $.post(url, data, function(return_data){
       if(return_data.err){
         $("#login_return").addClass("text-danger").html(return_data.msg);
+        $(form).find("button").attr("disabled",false);
       }else{
         $("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
         // set cookie here
@@ -141,7 +142,6 @@ $(document).on("submit", "#login_form", function (e) {
         setCookie("deposit_address", return_data.deposit_address, 30);
         setTimeout(function(){window.location="/dashboard.html"},1000);
         
-        $(form).find("button").attr("disabled",false);
       }
       
       $(form).find("button i").attr("class", prev_classes);
