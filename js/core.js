@@ -264,28 +264,31 @@ $(document).on("submit", "#account_form", function (e) {
 });
 
 $(document).on("submit", "#withdraw_form", function (e) {
-    e.preventDefault();
-    alert("not implemented yet");
-    throw new Error();
-    
+    e.preventDefault();    
     var form = this;
+  
+    $(form).find("button").attr("disabled",true);
+    var prev_classes = $(form).find("button i").attr("class");
+    $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
+    
     var data =  $('#withdraw_form').serialize();
     var url = $("#withdraw_form").attr("action");
     $.post(url, data, function(return_data){
       if(return_data.err){
-        $("#account_return").addClass("text-danger").html(return_data.msg);
+        $("#withdraw_return").addClass("text-danger").html(return_data.msg);
         if(return_data.msg == "Authentication Failed. Logging out..."){
           //destroy all cookies
           destroyAllCookies();
-          setTimeout(function(){window.location="/"},5000);
+          setTimeout(function(){window.location="/"},2500);
+        }else{
+          $(form).find("button").attr("disabled",false);
         }
       }else{
-        $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
-        // set cookie here
-        setCookie("token", return_data.token, 30);
-        setCookie("btc_address", return_data.btc_address, 30);
-        checkCookie();
+        $("#withdraw_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
       }
+      
+      $(form).find("button i").attr("class", prev_classes);
+        
     },"json");
 });
 
@@ -412,4 +415,4 @@ if(window.location.pathname == "/dashboard.html"){
 }
 
 
-$(document).on("click", ".btc_amount", function (e) {alert($(this).data("btc"));});
+// $(document).on("click", ".btc_amount", function (e) {alert($(this).data("btc"));});
