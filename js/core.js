@@ -178,6 +178,7 @@ $(document).on("submit", "#register_form", function (e) {
           setCookie("token", return_data.token, 30);
           setCookie("register_date", return_data.register_date, 30);
           setCookie("btc_address", return_data.btc_address, 30);
+          setCookie("btc_unit", return_data.btc_unit, 30);
           setCookie("deposit_address", return_data.deposit_address, 30);
           setTimeout(function(){window.location="/dashboard.html"},1000);
         }
