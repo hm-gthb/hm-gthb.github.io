@@ -179,7 +179,7 @@ $(document).on("submit", "#register_form", function (e) {
           setCookie("register_date", return_data.register_date, 30);
           setCookie("btc_address", return_data.btc_address, 30);
           setCookie("deposit_address", return_data.deposit_address, 30);
-          setTimeout(function(){window.location="/dashboard.html"},5000);
+          setTimeout(function(){window.location="/dashboard.html"},1000);
         }
       
         $(form).find("button i").attr("class", prev_classes);
@@ -193,15 +193,26 @@ $(document).on("submit", "#register_form", function (e) {
 $(document).on("submit", "#forgot_form", function (e) {
     e.preventDefault();
     var form = this;
+    
+    $(form).find("button").attr("disabled",true);
+    var prev_classes = $(form).find("button i").attr("class");
+    $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
+      
     var data =  $('#forgot_form').serialize();
     var url = $("#forgot_form").attr("action");
     $.post(url, data, function(return_data){
       if(return_data.err){
         $("#password_return").addClass("text-danger").html(return_data.msg);
+        
+        $(form).find("button").attr("disabled",false);
+        
       }else{
         $("#password_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
         //destroy all cookies
         destroyAllCookies();
+        
+        $(form).find("button i").attr("class", prev_classes);
+      
       }
     },"json");
 });
