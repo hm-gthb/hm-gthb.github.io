@@ -222,6 +222,11 @@ $(document).on("submit", "#account_form", function (e) {
     if($("#up_account_pass1").val() == $("#up_account_pass2").val()){
       $("#account_return").html("");
       var form = this;
+      
+      $(form).find("button").attr("disabled",true);
+      var prev_classes = $(form).find("button i").attr("class");
+      $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
+      
       var data =  $('#account_form').serialize();
       var url = $("#account_form").attr("action");
       $.post(url, data, function(return_data){
@@ -230,7 +235,11 @@ $(document).on("submit", "#account_form", function (e) {
           if(return_data.msg == "Authentication Failed. Logging out..."){
             //destroy all cookies
             destroyAllCookies();
-            setTimeout(function(){window.location="/"},5000);
+            setTimeout(function(){window.location="/"},2500);
+          }else{
+            
+            $(form).find("button").attr("disabled",false);
+            
           }
         }else{
           $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
@@ -241,6 +250,9 @@ $(document).on("submit", "#account_form", function (e) {
           checkCookie();
           calculateBtc();
         }
+        
+        $(form).find("button i").attr("class", prev_classes);
+      
       },"json");
     }else{
       $("#account_return").removeClass("text-success").addClass("text-danger").html("Passwords don't match.");
