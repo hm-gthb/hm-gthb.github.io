@@ -16554,6 +16554,13 @@ ul.striped li:last-child {
 }
 
 
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0!important
+}
+
 #share-buttons img {
 width: 65px;
 padding: 5px;
