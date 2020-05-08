@@ -267,10 +267,14 @@ $(document).on("submit", "#account_form", function (e) {
 $(document).on("submit", "#withdraw_form", function (e) {
     e.preventDefault();    
 
-    var requested = $("#withdraw_amount").val();
+    var requested = parseFloat($("#withdraw_amount").val());
+    if(getCookie("btc_unit") == "mbtc"){
+      requested = requested / 1000;
+    }
     var tot_avail = parseFloat($("#total_available").data("btc"));
     var total_investment = parseFloat($("#total_investment").data("btc"));
     var all_avail = total_investment + tot_avail;
+    
     if(requested < all_avail){
 
       var form = this;
