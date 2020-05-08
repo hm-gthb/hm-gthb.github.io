@@ -111,7 +111,7 @@ $(document).on("click", ".copy", function (e) {
   /* Alert the copied text */
   $(this).html("Copied!");
   setTimeout(function(){ $(this).html("Copy"); },2000);
-}
+});
 
 $(document).on("submit", "#login_form", function (e) {
     e.preventDefault();
