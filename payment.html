@@ -17,8 +17,9 @@ permalink: payment.html
       </div>
       
       <div class="col-md-6 text-md-right p-1">
-        <a href="#" class="btn btn-secondary">Block Explorer</a>
-        <a href="#" class="btn btn-primary"><i class="fa fa-clone left"></i> Copy Link</a>
+        <a href="https://www.blockchain.com/btc/tx/b3163df279365dc5c9dd76d306194176c3d3f7fff90c57adf38a47699b714f28" target = "_blank" class="btn btn-secondary">Block Explorer</a>
+        <input type="hidden" value="" id="payment_link" >
+        <a data-href="payment_link" class="btn btn-primary"><i class="fa fa-clone left"></i> Copy Link</a>
       </div>
     </div>
     
@@ -67,22 +68,22 @@ permalink: payment.html
           <div  id="share-buttons" class="col-md-6" style = "text-align:center">
 
             <!-- Facebook -->
-            <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+            <a id = "fblink" href="" target="_blank">
                 <img src="/fb.png" alt="Facebook" />
             </a>
             
             <!-- Twitter -->
-            <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+            <a id = "twlink" href="" target="_blank">
                 <img src="/tweet.png" alt="Twitter" />
             </a>
             
             <!-- Reddit -->
-            <a href="http://reddit.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+            <a id = "redlink" href="" target="_blank">
                 <img src="/reddit.png" alt="Reddit" />
             </a>
             
             <!-- Email -->
-            <a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">
+            <a href="" data-action="share/whatsapp/share">
                 <img src="whatsapp.png" alt="Whatsapp" />
             </a>
          
@@ -92,3 +93,10 @@ permalink: payment.html
     </section>
   </div>
 </main>
+<script>
+$("#fblink").attr("href", "http://www.facebook.com/sharer.php?u="+ window.location.href + "#");
+$("#twlink").attr("href", "https://twitter.com/share?url="+ window.location.href + "#&amp;text=HYIP Milker Passive Income&amp;hashtags=hyip,passive%20income");
+$("#redlink").attr("href", "http://reddit.com/submit?url="+ window.location.href + "#&amp;title=HYIP Milker Passive Income");
+$("#redlink").attr("href", "whatsapp://send?text="+ window.location.href + "# HYIP Milker Passive Income");
+$("#payment_link").val(window.location.href + "#");
+</script>
