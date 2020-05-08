@@ -267,36 +267,46 @@ $(document).on("submit", "#account_form", function (e) {
 $(document).on("submit", "#withdraw_form", function (e) {
     e.preventDefault();    
 
-    // $("#withdraw_amount").val();
-    // çekmek istediği tutarı çekebilecek bakiyesi var mı diye bak uyar falan.
-    //$("#total_available").data("btc");
-    //$("#total_investment").data("btc");
-    
-    var form = this;
-    
-    $(form).find("button").attr("disabled",true);
-    var prev_classes = $(form).find("button i").attr("class");
-    $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
-    
-    var data =  $('#withdraw_form').serialize();
-    var url = $("#withdraw_form").attr("action");
-    $.post(url, data, function(return_data){
-      if(return_data.err){
-        $("#withdraw_return").addClass("text-danger").html(return_data.msg);
-        if(return_data.msg == "Authentication Failed. Logging out..."){
-          //destroy all cookies
-          destroyAllCookies();
-          setTimeout(function(){window.location="/"},2500);
-        }else{
-          $(form).find("button").attr("disabled",false);
-        }
-      }else{
-        $("#withdraw_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
-      }
+    // var requested = $("#withdraw_amount").val();
+    // var earned = $("#earned").data("btc");
+    // var ref_income = $("#ref_income").data("btc");
+    // var withdraw_fee = $("#withdraw_fee").data("btc");
+    var tot_avail = parseFloat($("#total_available").data("btc"));
+    var total_investment = parseFloat($("#total_investment").data("btc"));
+    var all_avail = total_investment + tot_avail;
+    if(requested < all_avail){
+
+      var form = this;
       
-      $(form).find("button i").attr("class", prev_classes);
+      $(form).find("button").attr("disabled",true);
+      var prev_classes = $(form).find("button i").attr("class");
+      $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
+      
+      var data =  $('#withdraw_form').serialize();
+      var url = $("#withdraw_form").attr("action");
+      $.post(url, data, function(return_data){
+        if(return_data.err){
+          $("#withdraw_return").addClass("text-danger").html(return_data.msg);
+          if(return_data.msg == "Authentication Failed. Logging out..."){
+            //destroy all cookies
+            destroyAllCookies();
+            setTimeout(function(){window.location="/"},2500);
+          }else{
+            $(form).find("button").attr("disabled",false);
+          }
+        }else{
+          $("#withdraw_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+        }
         
-    },"json");
+        $(form).find("button i").attr("class", prev_classes);
+          
+      },"json");
+
+    }else{
+      $("#withdraw_return").addClass("text-danger").html("Insufficient funds.");
+    }
+
+    
 });
 
   
