@@ -16554,6 +16554,13 @@ ul.striped li:last-child {
 }
 
 
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
+}
 
 @media all and (max-width:480px) {
   .small-buttons {
