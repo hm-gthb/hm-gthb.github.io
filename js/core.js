@@ -296,7 +296,7 @@ $(document).on("submit", "#withdraw_form", function (e) {
             $(form).find("button").attr("disabled",false);
           }
         }else{
-          $("#withdraw_return").removeClass("text-danger").addClass("text-success").html("<a href = '/payment.html?"+return_data.msg+"' target = '_blank'>/payment.html?"+return_data.msg+"</a> ");
+          $("#withdraw_return").removeClass("text-danger").addClass("text-success").html("<a href = '/payment.html?"+return_data.msg+"' target = '_blank'>Payment Tracking Page</a> ");
         }
         
         $(form).find("button i").attr("class", prev_classes);
