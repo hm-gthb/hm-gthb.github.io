@@ -236,6 +236,8 @@ $(document).on("submit", "#account_form", function (e) {
             //destroy all cookies
             destroyAllCookies();
             setTimeout(function(){window.location="/"},2500);
+          }else{
+            $(form).find("button").attr("disabled",false);
           }
         }else{
           $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
@@ -245,15 +247,16 @@ $(document).on("submit", "#account_form", function (e) {
           setCookie("btc_unit", return_data.btc_unit, 30);
           checkCookie();
           calculateBtc();
+          
+          setTimeout(function(){
+            $(form).find("button").attr("disabled",false);
+            $("#account_return").html("");
+          },3000);
+        
         }
         
         $(form).find("button i").attr("class", prev_classes);
         
-        setTimeout(function(){
-          $(form).find("button").attr("disabled",false);
-          $("#account_return").html("");
-        },3000);
-      
       },"json");
     }else{
       $("#account_return").removeClass("text-success").addClass("text-danger").html("Passwords don't match.");
