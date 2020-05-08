@@ -269,7 +269,9 @@ $(document).on("submit", "#withdraw_form", function (e) {
 
     // $("#withdraw_amount").val();
     // çekmek istediği tutarı çekebilecek bakiyesi var mı diye bak uyar falan.
-
+    //$("#total_available").data("btc");
+    //$("#total_investment").data("btc");
+    
     var form = this;
     
     $(form).find("button").attr("disabled",true);
