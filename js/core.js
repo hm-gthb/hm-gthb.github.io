@@ -109,7 +109,7 @@ function copyClip(el) {
   document.execCommand("copy");
 
   /* Alert the copied text */
-  alert("Copied the text: " + copyText.value);
+  $(this).html("Copied!");
 }
 
 $(document).on("submit", "#login_form", function (e) {
