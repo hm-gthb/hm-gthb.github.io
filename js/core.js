@@ -140,9 +140,10 @@ $(document).on("submit", "#login_form", function (e) {
         setCookie("btc_unit", return_data.btc_unit, 30);
         setCookie("deposit_address", return_data.deposit_address, 30);
         setTimeout(function(){window.location="/dashboard.html"},1000);
+        
+        $(form).find("button").attr("disabled",false);
       }
       
-      $(form).find("button").attr("disabled",false);
       $(form).find("button i").attr("class", prev_classes);
       
     },"json");
