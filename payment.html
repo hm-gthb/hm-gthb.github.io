@@ -96,7 +96,7 @@ permalink: payment.html
 <script>
 $("#fblink").attr("href", "http://www.facebook.com/sharer.php?u="+ window.location.href + "#");
 $("#twlink").attr("href", "https://twitter.com/share?url="+ window.location.href + "#&amp;text=HYIP Milker Passive Income&amp;hashtags=hyip,passive%20income");
-$("#redlink").attr("href", "http://reddit.com/submit?url="+ window.location.href + "#&amp;title=HYIP Milker Passive Income");
+$("#redlink").attr("href", "http://reddit.com/submit?url="+ encodeURI(window.location.href) + "#&amp;title=HYIP Milker Passive Income");
 $("#whatlink").attr("href", "whatsapp://send?text="+ window.location.href + "# HYIP Milker Passive Income");
 $("#payment_link").val(window.location.href + "#");
 </script>
