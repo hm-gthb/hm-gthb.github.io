@@ -128,7 +128,9 @@ $(document).on("submit", "#login_form", function (e) {
     $.post(url, data, function(return_data){
       if(return_data.err){
         $("#login_return").addClass("text-danger").html(return_data.msg);
+        
         $(form).find("button").attr("disabled",false);
+        
       }else{
         $("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
         // set cookie here
@@ -154,11 +156,19 @@ $(document).on("submit", "#register_form", function (e) {
     if($("#register_password").val() == $("#register_password2").val()){
       $("#register_return").html("");
       var form = this;
+    
+      $(form).find("button").attr("disabled",true);
+      var prev_classes = $(form).find("button i").attr("class");
+      $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
+      
       var data =  $('#register_form').serialize();
       var url = $("#register_form").attr("action");
       $.post(url, data, function(return_data){
         if(return_data.err){
           $("#register_return").addClass("text-danger").html(return_data.msg);
+       
+          $(form).find("button").attr("disabled",false);
+        
         }else{
           $("#register_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
           // set cookie here
@@ -171,6 +181,9 @@ $(document).on("submit", "#register_form", function (e) {
           setCookie("deposit_address", return_data.deposit_address, 30);
           setTimeout(function(){window.location="/dashboard.html"},5000);
         }
+      
+        $(form).find("button i").attr("class", prev_classes);
+      
       },"json");
     }else{
       $("#register_return").removeClass("text-success").addClass("text-danger").html("Passwords don't match.");
