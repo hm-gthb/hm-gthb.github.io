@@ -5,6 +5,13 @@ permalink: payment.html
 ---
 <script>
 alert(window.location.search);
+
+//https://btc.com/api-doc#Transaction
+$.get("https://chain.api.btc.com/v3/tx/b3163df279365dc5c9dd76d306194176c3d3f7fff90c57adf38a47699b714f28?verbose=2", function(data){
+  console.log(data);
+});
+
+
 </script>
 <main class="">
   <div class="container-fluid">
