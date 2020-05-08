@@ -112,7 +112,7 @@ $(document).on("click", ".copy", function (e) {
   /* Alert the copied text */
   var prev_html = $(that).html();
   $(that).html("Copied!");
-  setTimeout(function(){ $(that).html(prev_html); },2000);
+  setTimeout(function(){ $(that).html(prev_html); $(".waves-ripple").remove();},2000);
 });
 
 $(document).on("submit", "#login_form", function (e) {
