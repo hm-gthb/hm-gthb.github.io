@@ -267,10 +267,7 @@ $(document).on("submit", "#account_form", function (e) {
 $(document).on("submit", "#withdraw_form", function (e) {
     e.preventDefault();    
 
-    // var requested = $("#withdraw_amount").val();
-    // var earned = $("#earned").data("btc");
-    // var ref_income = $("#ref_income").data("btc");
-    // var withdraw_fee = $("#withdraw_fee").data("btc");
+    var requested = $("#withdraw_amount").val();
     var tot_avail = parseFloat($("#total_available").data("btc"));
     var total_investment = parseFloat($("#total_investment").data("btc"));
     var all_avail = total_investment + tot_avail;
