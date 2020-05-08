@@ -99,7 +99,8 @@ function calculateBtc(){
 
 $(document).on("click", ".copy", function (e) {
   /* Get the text field */
-  var copyText = document.getElementById($(this).data("href"));
+  var that = this;
+  var copyText = document.getElementById($(that).data("href"));
 
   /* Select the text field */
   copyText.select();
@@ -109,8 +110,9 @@ $(document).on("click", ".copy", function (e) {
   document.execCommand("copy");
 
   /* Alert the copied text */
-  $(this).html("Copied!");
-  setTimeout(function(){ $(this).html("Copy"); },2000);
+  var prev_html = $(that).html();
+  $(that).html("Copied!");
+  setTimeout(function(){ $(that).html(prev_html); },2000);
 });
 
 $(document).on("submit", "#login_form", function (e) {
