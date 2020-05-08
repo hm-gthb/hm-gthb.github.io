@@ -112,12 +112,17 @@ $(document).on("click", ".copy", function (e) {
   /* Alert the copied text */
   var prev_html = $(that).html();
   $(that).html("Copied!");
-  setTimeout(function(){ $(that).html(prev_html); $(".waves-ripple").remove();},2000);
+  setTimeout(function(){ $(that).html(prev_html); $(".waves-ripple").remove();},2500);
 });
 
 $(document).on("submit", "#login_form", function (e) {
     e.preventDefault();
     var form = this;
+    
+    $(form).find("button").attr("disabled",true);
+    var prev_classes = $(form).find("button i").attr("class");
+    $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
+    
     var data =  $('#login_form').serialize();
     var url = $("#login_form").attr("action");
     $.post(url, data, function(return_data){
@@ -134,8 +139,12 @@ $(document).on("submit", "#login_form", function (e) {
         setCookie("btc_address", return_data.btc_address, 30);
         setCookie("btc_unit", return_data.btc_unit, 30);
         setCookie("deposit_address", return_data.deposit_address, 30);
-        setTimeout(function(){window.location="/dashboard.html"},5000);
+        setTimeout(function(){window.location="/dashboard.html"},1000);
       }
+      
+      $(form).find("button").attr("disabled",false);
+      $(form).find("button i").attr("class", prev_classes);
+      
     },"json");
 });
 
