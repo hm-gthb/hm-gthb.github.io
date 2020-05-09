@@ -104,14 +104,26 @@ function calculateBtc(){
 $(document).on("click", ".copy", function (e) {
   /* Get the text field */
   var that = this;
-  var copyText = document.getElementById($(that).data("href"));
+  if($(that).data("href") == "payment_link"){
+    var dummy = document.createElement('input'),
+    text = window.location.href + "#";
 
-  /* Select the text field */
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+  }else{
+    var copyText = document.getElementById($(that).data("href"));
 
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+    
+  }
 
   /* Alert the copied text */
   var prev_html = $(that).html();
