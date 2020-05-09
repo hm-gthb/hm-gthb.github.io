@@ -357,8 +357,8 @@ if(window.location.pathname == "/dashboard.html"){
 
 
 
-        var earned = 0;
-        var ref_income = 0;
+     //   var earned = 0;
+     //   var ref_income = 0;
         if(data.earn_data.length > 0){
           $("#earn_table").html("");
           $.each(data.earn_data, function(k, earn){
@@ -366,11 +366,11 @@ if(window.location.pathname == "/dashboard.html"){
             if(earn.label == "investment"){
               type = "green";
               label = "Investment"
-              if(earn.used_by == "0"){earned += parseFloat(earn.amount);}
+            //  if(earn.used_by == "0"){earned += parseFloat(earn.amount);}
             }else if(earn.label == "referral"){
               type = "blue";
               label = "Referral"
-              if(earn.used_by == "0"){ref_income += parseFloat(earn.amount);}
+            //  if(earn.used_by == "0"){ref_income += parseFloat(earn.amount);}
             }
             
             var date = new Date(earn.timestamp * 1000);
@@ -383,13 +383,13 @@ if(window.location.pathname == "/dashboard.html"){
           $("#earn_table").html('<tr><td colspan="3" style="text-align: center;">You haven\'t earned anything, yet.</td></tr>');
         }
         
-        $("#earned").data("btc", parseFloat(earned).toFixed(8));
-        $("#earned_usd").html((earned * data.exchange).toFixed(2) + "$"); //$
-        $("#ref_income").data("btc", parseFloat(ref_income).toFixed(8));
-        $("#ref_income_usd").html((ref_income * data.exchange).toFixed(2) + "$"); //$
-        $("#total_earned").data("btc", parseFloat(earned+ref_income).toFixed(8));
+        $("#earned").data("btc", data.dep_earning);
+        $("#earned_usd").html((data.dep_earning * data.exchange).toFixed(2) + "$"); //$
+        $("#ref_income").data("btc", data.ref_earning);
+        $("#ref_income_usd").html((data.ref_earning * data.exchange).toFixed(2) + "$"); //$
+        $("#total_earned").data("btc", data.total_earning);
         $("#withdraw_fee").data("btc", data.fee);
-        var tot_avail = parseFloat(earned+ref_income-data.fee).toFixed(8);
+        var tot_avail = parseFloat(data.total_earning-data.fee).toFixed(8);
         $("#total_available").data("btc", tot_avail);
         if(tot_avail < 0){
           $("#anymore").hide();
@@ -404,7 +404,7 @@ if(window.location.pathname == "/dashboard.html"){
           
           
           
-        var total_investment = 0;
+      //  var total_investment = 0;
         if(data.tx_data.length > 0){
           $("#tx_table").html("");
           $.each(data.tx_data, function(k, tx){
@@ -427,7 +427,7 @@ if(window.location.pathname == "/dashboard.html"){
               label = "Leftover";
               payment_link = "-";
             }
-            if(tx.active == "1"){total_investment+=parseFloat(tx.amount);}
+          //  if(tx.active == "1"){total_investment+=parseFloat(tx.amount);}
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
@@ -437,8 +437,8 @@ if(window.location.pathname == "/dashboard.html"){
         }else{
           $("#tx_table").html('<tr><td colspan="3" style="text-align: center;">You don\'t have any deposits.</td></tr>');
         }
-        $("#total_investment").data("btc", parseFloat(total_investment).toFixed(8));
-        $("#total_investment_usd").html((total_investment * data.exchange).toFixed(2) + "$"); //$
+        $("#total_investment").data("btc", data.total_deposit);
+        $("#total_investment_usd").html((data.total_deposit * data.exchange).toFixed(2) + "$"); //$
           
         //data.tx_data
         //data.earn_data
