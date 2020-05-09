@@ -4,9 +4,9 @@ title: Payment Details
 permalink: payment.html
 ---
 <script>
-//alert(window.location.search);
-
-
+var str = Base64.decode((window.location.search).substr(1));
+var vals = str.split("|");
+console.log(vals);
 </script>
 <main class="">
   <div class="container-fluid">
