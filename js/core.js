@@ -312,7 +312,9 @@ $(document).on("submit", "#withdraw_form", function (e) {
             $(form).find("button").attr("disabled",false);
           }
         }else{
-          $("#withdraw_return").removeClass("text-danger").addClass("text-success").html("Success!<br><a href = '/payment.html?"+return_data.msg+"' target = '_blank'>Payment Tracking Page</a> ");
+          console.log(return_data.msg);
+          var b64e = Base64.encode(return_data.msg);
+          $("#withdraw_return").removeClass("text-danger").addClass("text-success").html("Success!<br><a href = '/payment.html?"+b64e+"#' target = '_blank'>Payment Tracking Page</a> ");
         }
         
         $(form).find("button i").attr("class", prev_classes);
@@ -413,13 +415,14 @@ if(window.location.pathname == "/dashboard.html"){
               ico = "up";
               label = "Deposit";
               payment_link = "-";
-            }else if(tx.type == "red"){
-              type = "blue";
+            }else if(tx.type == "withdraw"){
+              type = "red";
               ico = "down";
               label = "Withdraw";
-              payment_link = "<a target = '_blank' href = 'payment.html?"+tx.txid+"' title = 'Payment Proof' class = 'external-link'><i class = 'fa fa-external-link'></i></a>";
-            }else if(tx.type == "orange"){
-              type = "blue";
+              tx_b64 = Base64.encode(tx.uid +"|"+ tx.timestamp +"|"+ tx.txid +"|"+ tx.to_address +"|"+ tx.amount);
+              payment_link = "<a target = '_blank' href = 'payment.html?"+tx_b64+"' title = 'Payment Proof' class = 'external-link'><i class = 'fa fa-external-link'></i></a>";
+            }else if(tx.type == "leftover"){
+              type = "orange";
               ico = "left";
               label = "Leftover";
               payment_link = "-";
