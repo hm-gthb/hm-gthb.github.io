@@ -3,11 +3,7 @@ layout: default
 title: Payment Details
 permalink: payment.html
 ---
-<script>
-var str = Base64.decode((window.location.search).substr(1));
-var vals = str.split("|");
-console.log(vals);
-</script>
+
 <main class="">
   <div class="container-fluid">
       
@@ -16,11 +12,11 @@ console.log(vals);
     <div class="row white z-depth-1 mt-2">
     
       <div class="col-md-6">
-        <h4 class="h4-responsive mt-1 p-1">Payment Proof #1234</h4>
+        <h4 class="h4-responsive mt-1 p-1">Payment Proof #<span id = "payment_time_id">error</span></h4>
       </div>
       
       <div class="col-md-6 text-md-right p-1">
-        <a href="https://www.blockchain.com/btc/tx/b3163df279365dc5c9dd76d306194176c3d3f7fff90c57adf38a47699b714f28" target = "_blank" class="btn btn-secondary">Block Explorer</a>
+        <a href="#" target = "_blank" class="btn btn-secondary payment_block_link">Block Explorer</a>
         <input type="hidden" value="" id="payment_link" >
         <a data-href="payment_link" class="btn btn-primary"><i class="fa fa-clone left"></i> Copy Link</a>
       </div>
@@ -37,19 +33,19 @@ console.log(vals);
           
             <div class="col-xl-2">
                     <div class ="mt-1 mb-1" style="border-bottom: 1px solid lightgray"><b>Time</b></div>
-                    <div>05/05/2020 13:50</div>
+                    <div id = "payment_date">00/00/0000 00:00</div>
             </div>
             <div class="col-xl-4">
                     <div class ="mt-1 mb-1" style="border-bottom: 1px solid lightgray"><b>TX Hash</b></div>
-                    <div class = "truncate"><a href = "https://www.blockchain.com/btc/tx/b3163df279365dc5c9dd76d306194176c3d3f7fff90c57adf38a47699b714f28" target = "_blank">b3163df279365dc5c9dd76d306194176c3d3f7fff90c57adf38a47699b714f28</a></div>
+                    <div class = "truncate"><a class = "payment_block_link" href = "#" target = "_blank"><span id = "payment_tx_hash"></span></a></div>
             </div>
             <div class="col-xl-3">
                     <div class ="mt-1 mb-1" style="border-bottom: 1px solid lightgray"><b>Address</b></div>
-                    <div>19pZ3TvumtR4sjttGD23cGEDTzKfjRtBxu</div>
+                    <div id = "payment_address">-</div>
             </div>
             <div class="col-xl-2">
                     <div class ="mt-1 mb-1" style="border-bottom: 1px solid lightgray"><b>Amount</b></div>
-                    <div>0.00000001 BTC</div>
+                    <div id = "payment_amount">0.00000000 BTC</div>
             </div>
             <div class="col-xl-1">
                     <div class ="mt-1 mb-1" style="border-bottom: 1px solid lightgray"><b>Status</b></div>
@@ -62,8 +58,8 @@ console.log(vals);
         
         <div class="row mt-5">
           <div class="col-md-6 float-md-left " style = "text-align:center">
-          <!--
-            <a>
+          
+            <a style = "display:none" id = "payment_page_register_btn" data-toggle="modal" data-target="#register_modal">
               <div class="card mb-r text-xs-center py-1 success-color white-text ">
                 <div class="widget-icon-large">
                   <i class="fa fa-user-plus"></i>
@@ -71,8 +67,8 @@ console.log(vals);
                 </div>
               </div>
             </a>
-            -->
-            <div class="card mb-r text-xs-center py-1 ">
+            
+            <div style = "display:none" id = "payment_page_ref_notice" class="card mb-r text-xs-center py-1 ">
               <div class="lead">
                 This page acts as your referral link. Share it on passive income forums, social media groups and with your friends to get more referrals!
               </div>

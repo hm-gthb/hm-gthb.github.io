@@ -314,7 +314,6 @@ $(document).on("submit", "#withdraw_form", function (e) {
     
 });
 
-  
 if(window.location.pathname == "/dashboard.html"){
   $( document ).ready(function(){
     $.post("{{site.ngrok}}/dashboard.php", {"uid":getCookie("id"), "token": getCookie("token")}, function(data){
@@ -436,5 +435,38 @@ if(window.location.pathname == "/dashboard.html"){
   });
 }
 
+
+  
+if(window.location.pathname == "/payment.html"){
+  $( document ).ready(function(){
+    var str = Base64.decode((window.location.search).substr(1));
+    var vals = str.split("|");
+    setCookie("referrer_uid", vals[0], 30);
+
+    var date = new Date(vals[1] * 1000);
+    var hours = date.getHours();
+    var minutes = "0" + date.getMinutes();
+
+    var dateStr = date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+" "+hours + ':' + minutes.substr(-2);
+
+    $("#payment_time_id").html(vals[1] / 1000000);
+    $(".payment_block_link").attr("href", "https://www.blockchain.com/btc/tx/" + vals[2]);
+    $("#payment_date").html(dateStr);
+    $("#payment_tx_hash").html(vals[2]);
+    $("#payment_address").html(vals[3]);
+    $("#payment_amount").html(vals[4] + " BTC"); 
+
+    var logged_in = getCookie("token");
+    if(logged_in){
+      $("#payment_page_register_btn").hide();
+      $("#payment_page_ref_notice").show();
+    }else{
+      $("#payment_page_register_btn").show();
+      $("#payment_page_ref_notice").hide();
+    }
+      
+  });
+}
+    
 
 // $(document).on("click", ".btc_amount", function (e) {alert($(this).data("btc"));});
