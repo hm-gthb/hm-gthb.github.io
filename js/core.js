@@ -312,10 +312,10 @@ $(document).on("submit", "#withdraw_form", function (e) {
             $(form).find("button").attr("disabled",false);
           }
         }else{
-          console.log(return_data.msg);
           var b64e = Base64.encode(return_data.msg);
           $("#withdraw_return").removeClass("text-danger").addClass("text-success").html("Success!<br><a href = '/payment.html?"+b64e+"#' target = '_blank'>Payment Tracking Page</a> ");
         }
+          console.log(return_data);
         
         $(form).find("button i").attr("class", prev_classes);
           
