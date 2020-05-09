@@ -449,7 +449,7 @@ if(window.location.pathname == "/payment.html"){
 
     var dateStr = date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+" "+hours + ':' + minutes.substr(-2);
 
-    $("#payment_time_id").html(vals[1] / 1000000);
+    $("#payment_time_id").html(vals[1].substr(5));
     $(".payment_block_link").attr("href", "https://www.blockchain.com/btc/tx/" + vals[2]);
     $("#payment_date").html(dateStr);
     $("#payment_tx_hash").html(vals[2]);
