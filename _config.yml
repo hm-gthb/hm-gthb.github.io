@@ -5,10 +5,10 @@ title: High Yield Investment Program Milker
   baseurl: ''
   permalink: '/:title.html'
   ngrok: https://d00aefb1.ngrok.io/x/hyipmilker/php-hyipmilker
-  exclude: [wSERVEJEKYLL.bat, .gitignore, DRAFTS]
-  active_members: 1
-  transactions: 10
-  profits: 100
+  exclude: [.git, .gitignore]
+  active_members: 68
+  transactions: 68
+  profits: 3197
   days_online: 10
-  programs: 33
-  ref_income: 1000
+  programs: 43
+  ref_income: 266
