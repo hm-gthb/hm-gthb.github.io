@@ -312,11 +312,11 @@ $(document).on("submit", "#withdraw_form", function (e) {
             $(form).find("button").attr("disabled",false);
           }
         }else{
-         // var b64e = Base64.encode(return_data.msg);
-         // $("#withdraw_return").removeClass("text-danger").addClass("text-success").html("Success!<br><a href = '/payment.html?"+b64e+"#' target = '_blank'>Payment Tracking Page</a> ");
+          var b64e = Base64.encode(return_data.msg);
+          $("#withdraw_return").removeClass("text-danger").addClass("text-success").html("Success!<br><a href = '/payment.html?"+b64e+"#' target = '_blank'>Payment Tracking Page</a> ");
         }
         
-        console.log(return_data);
+        //console.log(return_data);
         
         $(form).find("button i").attr("class", prev_classes);
           
@@ -361,19 +361,23 @@ if(window.location.pathname == "/dashboard.html"){
         if(data.earn_data.length > 0){
           $("#earn_table").html("");
           $.each(data.earn_data, function(k, earn){
-            var type,label;
+            var type,label,earn_active;
             if(earn.label == "investment"){
               type = "green";
               label = "Investment"
             }else if(earn.label == "referral"){
               type = "blue";
               label = "Referral"
+            }else if(earn.label == "leftover"){
+              type = "orange";
+              label = "Leftover";
+              earn_active = " style = 'color:lightgray'";
             }
             
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#earn_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td><span class = 'btc_amount' data-btc = '"+parseFloat(earn.amount).toFixed(8)+"'></span><br><span class = 'btc_unit'> BTC</span></td></tr>");
+            $("#earn_table").append("<tr"+earn_active+"><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" income-tag'>"+label+"</td><td><span class = 'btc_amount' data-btc = '"+parseFloat(earn.amount).toFixed(8)+"'></span><br><span class = 'btc_unit'> BTC</span></td></tr>");
             
           });
         }else{
@@ -404,7 +408,7 @@ if(window.location.pathname == "/dashboard.html"){
         if(data.tx_data.length > 0){
           $("#tx_table").html("");
           $.each(data.tx_data, function(k, tx){
-            var type,ico,label;
+            var type,ico,label,tx_active;
             var payment_link;
             if(tx.type == "deposit"){
               type = "green";
@@ -422,11 +426,12 @@ if(window.location.pathname == "/dashboard.html"){
               ico = "left";
               label = "Leftover";
               payment_link = "-";
+              tx_active = " style = 'color:lightgray'";
             }
             var date = new Date(tx.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
-            $("#tx_table").append("<tr><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td><span class = 'btc_amount' data-btc = '"+parseFloat(tx.amount).toFixed(8)+"'></span><br><span class = 'btc_unit'> BTC</span></td><td>"+payment_link+"</td></tr>");
+            $("#tx_table").append("<tr"+tx_active+"><td>"+date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()+"<br>"+hours + ':' + minutes.substr(-2)+"</td><td><span class='tag "+type+" tx-tag'><span class = 'hidden-xs'>"+label+" </span><i class='fa fa-arrow-circle-"+ico+"'></i></span></td><td><span class = 'btc_amount' data-btc = '"+parseFloat(tx.amount).toFixed(8)+"'></span><br><span class = 'btc_unit'> BTC</span></td><td>"+payment_link+"</td></tr>");
             
           });
         }else{
