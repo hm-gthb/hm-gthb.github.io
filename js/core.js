@@ -361,7 +361,7 @@ if(window.location.pathname == "/dashboard.html"){
         if(data.earn_data.length > 0){
           $("#earn_table").html("");
           $.each(data.earn_data, function(k, earn){
-            var type,label,earn_active;
+            var type,label,earn_active = '';
             if(earn.label == "investment"){
               type = "green";
               label = "Investment"
@@ -408,7 +408,7 @@ if(window.location.pathname == "/dashboard.html"){
         if(data.tx_data.length > 0){
           $("#tx_table").html("");
           $.each(data.tx_data, function(k, tx){
-            var type,ico,label,tx_active;
+            var type,ico,label,tx_active = '';
             var payment_link;
             if(tx.type == "deposit"){
               type = "green";
