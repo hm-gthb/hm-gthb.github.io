@@ -1,14 +1,14 @@
 title: High Yield Investment Program Milker
-  desc: Earn passive income with high yield investment programs
-  description: 'Earn passive income with high yield investment programs'
-  url: https://hyipmilker.com
-  baseurl: ''
-  permalink: '/:title.html'
-  ngrok: https://d00aefb1.ngrok.io/x/hyipmilker/php-hyipmilker
-  exclude: [.git, .gitignore]
-  active_members: 68
-  transactions: 68
-  profits: 3197
-  days_online: 10
-  programs: 43
-  ref_income: 266
+desc: Earn passive income with high yield investment programs
+description: 'Earn passive income with high yield investment programs'
+url: https://hyipmilker.com
+baseurl: ''
+permalink: '/:title.html'
+ngrok: https://d00aefb1.ngrok.io/x/hyipmilker/php-hyipmilker
+exclude: [.git, .gitignore]
+active_members: 68
+transactions: 68
+profits: 3200
+days_online: 10
+programs: 48
+ref_income: 267
