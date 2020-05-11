@@ -489,8 +489,9 @@ if(window.location.pathname == "/payment.html"){
   });
 }
     
-$("document").change("#withdraw_amount", function(){
+$(document).on("change paste keyup", "#withdraw_amount", function() {
   $("#requested_amount_in_textbox").html($(this).val());
-  $("#total_withdraw_amount").html((parseFloat($(this).val()) * parseFloat($(".withdraw_fee").html())).toFixed(8));
+  $("#total_withdraw_amount").html((parseFloat($(this).val()) * parseFloat($(".withdraw_fee").html())).toFixed(8)*100000000)/100000000);
 });
+
 // $(document).on("click", ".btc_amount", function (e) {alert($(this).data("btc"));});
