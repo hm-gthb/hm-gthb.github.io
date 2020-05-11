@@ -4,7 +4,7 @@ description: 'Earn passive income with high yield investment programs'
 url: https://hyipmilker.com
 baseurl: ''
 permalink: '/:title.html'
-ngrok: /backend
+ngrok: https://79f0b017.ngrok.io/backend
 exclude: [.git, .gitignore]
 active_members: 0
 transactions: 0
