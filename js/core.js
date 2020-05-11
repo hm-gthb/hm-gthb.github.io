@@ -431,7 +431,7 @@ if(window.location.pathname == "/dashboard.html"){
               label = "Leftover";
               payment_link = "-";
             }
-            if(tx.active == "0"){
+            if(tx.used_by != "0"){
               tx_active = " style = 'color:lightgray'";
             }else{
               tx_active = "";
