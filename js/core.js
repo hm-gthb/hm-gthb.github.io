@@ -371,9 +371,10 @@ if(window.location.pathname == "/dashboard.html"){
             }else if(earn.label == "leftover"){
               type = "orange";
               label = "Leftover";
+            }
+            if(earn.used_by){
               earn_active = " style = 'color:lightgray'";
             }
-            
             var date = new Date(earn.timestamp * 1000);
             var hours = date.getHours();
             var minutes = "0" + date.getMinutes();
@@ -426,6 +427,8 @@ if(window.location.pathname == "/dashboard.html"){
               ico = "left";
               label = "Leftover";
               payment_link = "-";
+            }
+            if(!tx.active){
               tx_active = " style = 'color:lightgray'";
             }
             var date = new Date(tx.timestamp * 1000);
