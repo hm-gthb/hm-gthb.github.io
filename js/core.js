@@ -372,7 +372,7 @@ if(window.location.pathname == "/dashboard.html"){
               type = "orange";
               label = "Leftover";
             }
-            if(earn.used_by){
+            if(earn.used_by != "0"){
               earn_active = " style = 'color:lightgray'";
             }else{
               earn_active = "";
@@ -431,7 +431,7 @@ if(window.location.pathname == "/dashboard.html"){
               label = "Leftover";
               payment_link = "-";
             }
-            if(!tx.active){
+            if(tx.active == "0"){
               tx_active = " style = 'color:lightgray'";
             }else{
               tx_active = "";
