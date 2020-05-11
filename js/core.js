@@ -393,7 +393,7 @@ if(window.location.pathname == "/dashboard.html"){
         $("#ref_income").data("btc", data.ref_earning);
         $("#ref_income_usd").html((data.ref_earning * data.exchange).toFixed(2) + "$"); //$
         $("#total_earned").data("btc", data.total_earning);
-        $("#withdraw_fee").data("btc", data.fee);
+        $(".withdraw_fee").data("btc", data.fee);
         var tot_avail = parseFloat(data.total_earning-data.fee).toFixed(8);
         $("#total_available").data("btc", tot_avail);
         if(tot_avail < 0){
@@ -489,5 +489,8 @@ if(window.location.pathname == "/payment.html"){
   });
 }
     
-
+$("document").change("#withdraw_amount", function(){
+  $("#requested_amount_in_textbox").html($(this).val());
+  $("#total_withdraw_amount").html((parseFloat($(this).val()) * parseFloat($(".withdraw_fee").html())).toFixed(8));
+});
 // $(document).on("click", ".btc_amount", function (e) {alert($(this).data("btc"));});
