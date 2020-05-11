@@ -285,6 +285,7 @@ $(document).on("submit", "#withdraw_form", function (e) {
 
     if(getCookie("btc_address") == ""){
       $("#withdraw_return").addClass("text-danger").html("Enter a bitcoin address to your account.");
+      return;
     }
     
     var requested = parseFloat($("#withdraw_amount").val());
