@@ -6,9 +6,9 @@ baseurl: ''
 permalink: '/:title.html'
 ngrok: https://d00aefb1.ngrok.io/x/hyipmilker/php-hyipmilker
 exclude: [.git, .gitignore]
-active_members: 64
-transactions: 44
-profits: 3256
+active_members: 4
+transactions: 5.25
+profits: 4
 days_online: 10
-programs: 44
-ref_income: 271
+programs: 46
+ref_income: 0

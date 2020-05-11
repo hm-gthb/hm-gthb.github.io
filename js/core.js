@@ -283,6 +283,10 @@ $(document).on("submit", "#account_form", function (e) {
 $(document).on("submit", "#withdraw_form", function (e) {
     e.preventDefault();    
 
+    if(getCookie("btc_address") == ""){
+      $("#withdraw_return").addClass("text-danger").html("Enter a bitcoin address to your account.");
+    }
+    
     var requested = parseFloat($("#withdraw_amount").val());
     if(getCookie("btc_unit") == "mbtc"){
       requested = requested / 1000;
