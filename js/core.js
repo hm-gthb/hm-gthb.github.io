@@ -329,6 +329,8 @@ $(document).on("submit", "#withdraw_form", function (e) {
 
     }else{
       $("#withdraw_return").addClass("text-danger").html("Insufficient funds.");
+      alert(requested);
+      alert(all_avail);
     }
 
     
