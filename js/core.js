@@ -294,7 +294,7 @@ $(document).on("submit", "#withdraw_form", function (e) {
     }
     var tot_avail = parseFloat($("#total_available").data("btc"));
     var total_investment = parseFloat($("#total_investment").data("btc"));
-    var all_avail = parseFloat(total_investment + tot_avail);
+    var all_avail = parseFloat(total_investment + tot_avail).toFixed(8);
     
     if(requested <= all_avail){
 
