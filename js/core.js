@@ -288,9 +288,9 @@ $(document).on("submit", "#withdraw_form", function (e) {
       return;
     }
     
-    var requested = parseFloat($("#withdraw_amount").val());
+    var requested = parseFloat($("#withdraw_amount").val()).toFixed(8);
     if(getCookie("btc_unit") == "mbtc"){
-      requested = requested / 1000;
+      requested = parseFloat(requested / 1000).toFixed(8);
     }
     var tot_avail = parseFloat($("#total_available").data("btc"));
     var total_investment = parseFloat($("#total_investment").data("btc"));
