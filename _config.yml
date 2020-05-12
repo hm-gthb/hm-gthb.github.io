@@ -6,7 +6,7 @@ baseurl: ''
 permalink: '/:title.html'
 ngrok: https://79f0b017.ngrok.io/backend
 exclude: [.git, .gitignore]
-active_members: 0
+active_members: 4
 transactions: 0
 profits: 0
 days_online: 11
