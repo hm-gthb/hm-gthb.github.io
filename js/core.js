@@ -140,7 +140,7 @@ $(document).on("submit", "#login_form", function (e) {
     $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
     
     setTimeout(function(){
-      $("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+      $("#login_return").removeClass("text-danger").addClass("text-success").html("Successfully logged in. Redirecting...");
       // set cookie here
       setCookie("id", 0, 30);
       setCookie("username", "", 30);
