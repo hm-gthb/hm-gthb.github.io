@@ -407,7 +407,7 @@ if(window.location.pathname == "/dashboard.html"){
         checkCookie();
         calculateBtc();
   
-    },1000);
+    },1500);
     
   });
 }
