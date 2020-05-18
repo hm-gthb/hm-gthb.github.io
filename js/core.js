@@ -142,19 +142,19 @@ $(document).on("submit", "#login_form", function (e) {
     setTimeout(function(){
       $("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
       // set cookie here
-      setCookie("id", return_data.id, 30);
-      setCookie("username", return_data.username, 30);
-      setCookie("email", return_data.email, 30);
-      setCookie("token", return_data.token, 30);
-      setCookie("register_date", return_data.register_date, 30);
-      setCookie("btc_address", return_data.btc_address, 30);
-      setCookie("btc_unit", return_data.btc_unit, 30);
-      setCookie("deposit_address", return_data.deposit_address, 30);
+      setCookie("id", 0, 30);
+      setCookie("username", "", 30);
+      setCookie("email", "hidden", 30);
+      setCookie("token", "hidden", 30);
+      setCookie("register_date", "", 30);
+      setCookie("btc_address", "hidden", 30);
+      setCookie("btc_unit", "btc", 30);
+      setCookie("deposit_address", "1pz7exyW34rxns9jH1H5efZHJcf16Wr2v", 30);
       setTimeout(function(){window.location="/dashboard.html"},1000);
       
       $(form).find("button i").attr("class", prev_classes);
       
-    }, 2000);
+    }, 1500);
 
 });
 
