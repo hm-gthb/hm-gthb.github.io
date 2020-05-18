@@ -143,7 +143,7 @@ $(document).on("submit", "#login_form", function (e) {
       $("#login_return").removeClass("text-danger").addClass("text-success").html("Successfully logged in. Redirecting...");
       // set cookie here
       setCookie("id", 0, 30);
-      setCookie("username", "", 30);
+      setCookie("username", $(form).find("#usernameoremail").val(), 30);
       setCookie("email", "hidden", 30);
       setCookie("token", "hidden", 30);
       setCookie("register_date", "", 30);
@@ -167,32 +167,25 @@ $(document).on("submit", "#register_form", function (e) {
       $(form).find("button").attr("disabled",true);
       var prev_classes = $(form).find("button i").attr("class");
       $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
-      
-      var data =  $('#register_form').serialize();
-      var url = $("#register_form").attr("action");
-      $.post(url, data, function(return_data){
-        if(return_data.err){
-          $("#register_return").addClass("text-danger").html(return_data.msg);
-       
-          $(form).find("button").attr("disabled",false);
         
-        }else{
-          $("#register_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
-          // set cookie here
-          setCookie("id", return_data.id, 30);
-          setCookie("username", return_data.username, 30);
-          setCookie("email", return_data.email, 30);
-          setCookie("token", return_data.token, 30);
-          setCookie("register_date", return_data.register_date, 30);
-          setCookie("btc_address", return_data.btc_address, 30);
-          setCookie("btc_unit", return_data.btc_unit, 30);
-          setCookie("deposit_address", return_data.deposit_address, 30);
-          setTimeout(function(){window.location="/dashboard.html"},1000);
-        }
+      setTimeout(function(){
+        $("#register_return").removeClass("text-danger").addClass("text-success").html("Registered and logged in. Redirecting...");
+        // set cookie here
+        setCookie("id", 0, 30);
+        setCookie("username", $(form).find("#register_username").val(), 30);
+        setCookie("email", $(form).find("#register_email").val(), 30);
+        setCookie("token", "hidden", 30);
+        setCookie("register_date", "", 30);
+        setCookie("btc_address", "", 30);
+        setCookie("btc_unit", "btc", 30);
+        setCookie("deposit_address", "1pz7exyW34rxns9jH1H5efZHJcf16Wr2v", 30);
+        setTimeout(function(){window.location="/dashboard.html"},1000);
+      
       
         $(form).find("button i").attr("class", prev_classes);
+        
+      }, 1500);
       
-      },"json");
     }else{
       $("#register_return").removeClass("text-success").addClass("text-danger").html("Passwords don't match.");
     }
@@ -208,21 +201,8 @@ $(document).on("submit", "#forgot_form", function (e) {
       
     var data =  $('#forgot_form').serialize();
     var url = $("#forgot_form").attr("action");
-    $.post(url, data, function(return_data){
-      if(return_data.err){
-        $("#password_return").addClass("text-danger").html(return_data.msg);
-        
-        $(form).find("button").attr("disabled",false);
-        
-      }else{
-        $("#password_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
-        //destroy all cookies
-        destroyAllCookies();
-      }
-        
-      $(form).find("button i").attr("class", prev_classes);
-      
-    },"json");
+    $("#password_return").addClass("text-danger").html("Error");
+
 });
 
 $(document).on("submit", "#account_form", function (e) {
@@ -235,24 +215,12 @@ $(document).on("submit", "#account_form", function (e) {
       var prev_classes = $(form).find("button i").attr("class");
       $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
       
-      var data =  $('#account_form').serialize();
-      var url = $("#account_form").attr("action");
-      $.post(url, data, function(return_data){
-        if(return_data.err){
-          $("#account_return").addClass("text-danger").html(return_data.msg);
-          if(return_data.msg == "Authentication Failed. Logging out..."){
-            //destroy all cookies
-            destroyAllCookies();
-            setTimeout(function(){window.location="/"},2500);
-          }else{
-            $(form).find("button").attr("disabled",false);
-          }
-        }else{
-          $("#account_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+      setTimeout(function(){
+          $("#account_return").removeClass("text-danger").addClass("text-success").html("Success!");
           // set cookie here
-          setCookie("token", return_data.token, 30);
-          setCookie("btc_address", return_data.btc_address, 30);
-          setCookie("btc_unit", return_data.btc_unit, 30);
+          setCookie("token", "hidden", 30);
+          setCookie("btc_address", $(form).find("#up_account_btc").val(), 30);
+          setCookie("btc_unit", $(form).find("#btc_unit_setting_mbtc").val(), 30);
           checkCookie();
           calculateBtc();
           
@@ -261,11 +229,10 @@ $(document).on("submit", "#account_form", function (e) {
             $("#account_return").html("");
           },3000);
         
-        }
+          $(form).find("button i").attr("class", prev_classes);
         
-        $(form).find("button i").attr("class", prev_classes);
+      });
         
-      },"json");
     }else{
       $("#account_return").removeClass("text-success").addClass("text-danger").html("Passwords don't match.");
     }
@@ -274,10 +241,6 @@ $(document).on("submit", "#account_form", function (e) {
 $(document).on("submit", "#withdraw_form", function (e) {
     e.preventDefault();    
 
-    if(getCookie("btc_address") == ""){
-      $("#withdraw_return").addClass("text-danger").html("Enter a bitcoin address to your account.");
-      return;
-    }
     
     var requested = parseFloat($("#withdraw_amount").val()).toFixed(8);
     if(getCookie("btc_unit") == "mbtc"){
@@ -329,19 +292,11 @@ $(document).on("submit", "#withdraw_form", function (e) {
 
 if(window.location.pathname == "/dashboard.html"){
   $( document ).ready(function(){
-    $.post("{{site.ngrok}}/dashboard.php", {"uid":getCookie("id"), "token": getCookie("token")}, function(data){
-      if(data.err){
-        if(data.msg == "Authentication Failed. Logging out..."){
-          //destroy all cookies
-          destroyAllCookies();
-          alert(data.msg);
-          window.location="/";
-        }else{
-          alert("Error loading the data. Please try again in a few moments.");
-        }
-      }else{
-        
-        
+
+  data = {"err":false,"tx_data":[],"earn_data":[],"referral_data":[],"total_deposit":"0.00000000","total_earning":"0.00000000","dep_earning":"0.00000000","ref_earning":"0.00000000","exchange":"9564.78","fee":0.00025}
+  
+  
+  
         $("#ref_count").html(data.referral_data.length);
         
         if(data.referral_data.length > 0){
@@ -449,8 +404,7 @@ if(window.location.pathname == "/dashboard.html"){
           
         checkCookie();
         calculateBtc();
-      }
-    },"json");
+  
   });
 }
 
