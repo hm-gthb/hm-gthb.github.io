@@ -293,6 +293,8 @@ $(document).on("submit", "#withdraw_form", function (e) {
 if(window.location.pathname == "/dashboard.html"){
   $( document ).ready(function(){
 
+    setTimeout(function(){
+
   data = {"err":false,"tx_data":[],"earn_data":[],"referral_data":[],"total_deposit":"0.00000000","total_earning":"0.00000000","dep_earning":"0.00000000","ref_earning":"0.00000000","exchange":"9564.78","fee":0.00025}
   
   
@@ -405,6 +407,8 @@ if(window.location.pathname == "/dashboard.html"){
         checkCookie();
         calculateBtc();
   
+    },1000);
+    
   });
 }
 
