@@ -139,32 +139,23 @@ $(document).on("submit", "#login_form", function (e) {
     var prev_classes = $(form).find("button i").attr("class");
     $(form).find("button i").attr("class", "fa fa-spinner fa-spin");
     
-    var data =  $('#login_form').serialize();
-    var url = $("#login_form").attr("action");
-    $.post(url, data, function(return_data){
-      if(return_data.err){
-        $("#login_return").addClass("text-danger").html(return_data.msg);
-        
-        $(form).find("button").attr("disabled",false);
-        
-      }else{
-        $("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
-        // set cookie here
-        setCookie("id", return_data.id, 30);
-        setCookie("username", return_data.username, 30);
-        setCookie("email", return_data.email, 30);
-        setCookie("token", return_data.token, 30);
-        setCookie("register_date", return_data.register_date, 30);
-        setCookie("btc_address", return_data.btc_address, 30);
-        setCookie("btc_unit", return_data.btc_unit, 30);
-        setCookie("deposit_address", return_data.deposit_address, 30);
-        setTimeout(function(){window.location="/dashboard.html"},1000);
-        
-      }
+    setTimeout(function(){
+      $("#login_return").removeClass("text-danger").addClass("text-success").html(return_data.msg);
+      // set cookie here
+      setCookie("id", return_data.id, 30);
+      setCookie("username", return_data.username, 30);
+      setCookie("email", return_data.email, 30);
+      setCookie("token", return_data.token, 30);
+      setCookie("register_date", return_data.register_date, 30);
+      setCookie("btc_address", return_data.btc_address, 30);
+      setCookie("btc_unit", return_data.btc_unit, 30);
+      setCookie("deposit_address", return_data.deposit_address, 30);
+      setTimeout(function(){window.location="/dashboard.html"},1000);
       
       $(form).find("button i").attr("class", prev_classes);
       
-    },"json");
+    }, 2000);
+
 });
 
 $(document).on("submit", "#register_form", function (e) {
