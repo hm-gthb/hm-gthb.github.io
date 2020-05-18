@@ -142,7 +142,7 @@ $(document).on("submit", "#login_form", function (e) {
     setTimeout(function(){
       $("#login_return").removeClass("text-danger").addClass("text-success").html("Successfully logged in. Redirecting...");
       // set cookie here
-      setCookie("id", 0, 30);
+      setCookie("id", 886, 30);
       setCookie("username", $(form).find("#usernameoremail").val(), 30);
       setCookie("email", "hidden", 30);
       setCookie("token", "hidden", 30);
@@ -171,7 +171,7 @@ $(document).on("submit", "#register_form", function (e) {
       setTimeout(function(){
         $("#register_return").removeClass("text-danger").addClass("text-success").html("Registered and logged in. Redirecting...");
         // set cookie here
-        setCookie("id", 0, 30);
+        setCookie("id", 886, 30);
         setCookie("username", $(form).find("#register_username").val(), 30);
         setCookie("email", $(form).find("#register_email").val(), 30);
         setCookie("token", "hidden", 30);
