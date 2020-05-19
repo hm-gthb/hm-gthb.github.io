@@ -6,9 +6,9 @@ baseurl: ''
 permalink: '/:title.html'
 ngrok: https://35fbaff9.ngrok.io/backend
 exclude: [.git, .gitignore]
-active_members: 313
-transactions: 701
-profits: 3150
-days_online: 18
-programs: 42
-ref_income: 305
+active_members: 440
+transactions: 1120
+profits: 4808
+days_online: 19
+programs: 43
+ref_income: 395
