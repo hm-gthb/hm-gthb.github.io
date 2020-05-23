@@ -4,11 +4,11 @@ description: 'Earn passive income with high yield investment programs'
 url: https://hyipmilker.com
 baseurl: ''
 permalink: '/:title.html'
-ngrok: https://35fbaff9.ngrok.io/backend
+ngrok: https://hyipmilker.com/backend
 exclude: [.git, .gitignore]
-active_members: 578
-transactions: 1558
-profits: 6540
-days_online: 22
-programs: 43
-ref_income: 566
+active_members: 599
+transactions: 1620
+profits: 6679
+days_online: 23
+programs: 44
+ref_income: 590
