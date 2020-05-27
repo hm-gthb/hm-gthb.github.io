@@ -6,9 +6,9 @@ baseurl: ''
 permalink: '/:title.html'
 ngrok: https://hyipmilker.com/backend
 exclude: [.git, .gitignore]
-active_members: 622
-transactions: 1720
-profits: 7200
-days_online: 25
+active_members: 675
+transactions: 1820
+profits: 7520
+days_online: 27
 programs: 44
-ref_income: 605
+ref_income: 685
