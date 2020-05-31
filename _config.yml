@@ -9,6 +9,5 @@ exclude: [.git, .gitignore]
 active_members: "800+"
 transactions: "3000"
 profits: "1000"
-days_online: 30
 programs: "~50"
-ref_income: "1000+"
+ref_income: "1000"

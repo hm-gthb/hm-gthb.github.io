@@ -292,7 +292,7 @@ $(document).on("submit", "#withdraw_form", function (e) {
 
 if(window.location.pathname == "/"){
   $( document ).ready(function(){
-    $("#days_online").val(Math.floor(1588284000000/8.64e7));
+    $("#days_online").val(Math.ceil((new Date()-1588294800000)/24/60/60/1000));
   });
 };
 
